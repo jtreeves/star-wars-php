@@ -20,8 +20,7 @@ class FavoriteFactory extends Factory
         return [
             'quote' => $this->faker->sentence(10, true),
             'character' => $this->faker->name(),
-            'image' => $this->faker->url(),
-            'user_id' => User::factory()->create()->id
+            'image' => $this->faker->url()
         ];
     }
 }
