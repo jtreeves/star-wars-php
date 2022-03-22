@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+    * The relationship to the user's favorites.
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 }
