@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Profile;
 use App\Models\Mashup;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,23 +17,23 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UserSeeder::class,
+            ProfileSeeder::class,
             MashupSeeder::class
         ]);
 
-        $users = User::all();
+        $profiles = Profile::all();
         $mashups = Mashup::all();
 
-        foreach ($users as $user) {
+        foreach ($profiles as $profile) {
             $first = rand(1, 3);
             $second = rand(4, 6);
-            $user->mashups()->attach([$first, $second]);
+            $profile->mashups()->attach([$first, $second]);
         }
 
         foreach ($mashups as $mashup) {
             $first = rand(1, 3);
             $second = rand(4, 6);
-            $mashup->users()->attach([$first, $second]);
+            $mashup->profiles()->attach([$first, $second]);
         }
     }
 }

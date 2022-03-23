@@ -21,12 +21,12 @@ class Mashup extends Model
     ];
 
     /**
-    * The relationship to the mashup's users.
+    * The relationship to the mashup's profiles.
     *
     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     */
-    public function users()
+    public function profiles()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Profile::class);
     }
 }

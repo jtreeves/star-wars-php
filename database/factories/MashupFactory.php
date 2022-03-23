@@ -19,7 +19,7 @@ class MashupFactory extends Factory
         return [
             'quote' => $this->faker->sentence(10, true),
             'character' => $this->faker->name(),
-            'image' => $this->faker->url()
+            'image' => $this->faker->imageUrl()
         ];
     }
 }

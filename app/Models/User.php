@@ -43,12 +43,12 @@ class User extends Authenticatable
     ];
 
     /**
-    * The relationship to the user's mashups.
+    * The relationship to the user's profile.
     *
-    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
     */
-    public function mashups()
+    public function profile()
     {
-        return $this->belongsToMany(Mashup::class);
+        return $this->hasOne(Profile::class);
     }
 }

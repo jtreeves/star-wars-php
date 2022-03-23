@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mashup_user', function (Blueprint $table) {
+        Schema::create('mashup_profile', function (Blueprint $table) {
             $table->id();
             $table->foreignId('mashup_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('profile_id')->constrained();
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mashup_user');
+        Schema::dropIfExists('mashup_profile');
     }
 };
