@@ -43,12 +43,12 @@ class User extends Authenticatable
     ];
 
     /**
-    * The relationship to the user's favorites.
+    * The relationship to the user's mashups.
     *
-    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     */
-    public function favorites()
+    public function mashups()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->belongsToMany(Mashup::class);
     }
 }

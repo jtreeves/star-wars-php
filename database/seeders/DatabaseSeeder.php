@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use App\Models\Mashup;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,7 +18,22 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            FavoriteSeeder::class
+            MashupSeeder::class
         ]);
+
+        $users = User::all();
+        $mashups = Mashup::all();
+
+        foreach ($users as $user) {
+            $first = rand(1, 3);
+            $second = rand(4, 6);
+            $user->mashups()->attach([$first, $second]);
+        }
+
+        foreach ($mashups as $mashup) {
+            $first = rand(1, 3);
+            $second = rand(4, 6);
+            $mashup->users()->attach([$first, $second]);
+        }
     }
 }
