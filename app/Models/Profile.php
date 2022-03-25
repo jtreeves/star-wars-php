@@ -12,7 +12,7 @@ class Profile extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array<int,string>
      */
     protected $fillable = [
         'username',
@@ -39,6 +39,6 @@ class Profile extends Model
     */
     public function mashups()
     {
-        return $this->belongsToMany(Mashup::class);
+        return $this->belongsToMany(Mashup::class, 'favorites', 'profile_id', 'mashup_id');
     }
 }
