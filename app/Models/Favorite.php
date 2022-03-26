@@ -21,6 +21,16 @@ class Favorite extends Pivot
     public $incrementing = true;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int,string>
+     */
+    protected $fillable = [
+        'profile_id',
+        'mashup_id',
+    ];
+
+    /**
     * The relationship to the favorite's profile.
     *
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
