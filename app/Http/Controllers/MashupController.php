@@ -51,7 +51,7 @@ class MashupController extends Controller
                         'quote' => $mashup->quote,
                         'character' => $mashup->character,
                         'image' => $mashup->image,
-                        'favorited' => true,
+                        'isFavorited' => true,
                     ];
                     $finalMashups[] = $favoritedMashup;
                 } else {
@@ -60,7 +60,7 @@ class MashupController extends Controller
                         'quote' => $mashup->quote,
                         'character' => $mashup->character,
                         'image' => $mashup->image,
-                        'favorited' => false,
+                        'isFavorited' => false,
                     ];
                     $finalMashups[] = $unfavoritedMashup;
                 }

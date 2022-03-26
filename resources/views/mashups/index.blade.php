@@ -43,6 +43,38 @@
                             $mashup->character 
                         }}"
                     />
+
+                    @if (!$mashup->isFavorited)
+                        <form 
+                            action="{{ route(
+                                'favorites.store', 
+                                Auth::user()->profile()->id,
+                                $mashup->id
+                            ) }}"
+                            method="POST"
+                        >
+                            <button
+                                type="submit"
+                            >
+                                Favorite
+                            </button>
+                        </form>
+                    @else
+                        <form 
+                            action="{{ route(
+                                'favorites.destroy', 
+                                Auth::user()->profile()->id,
+                                $mashup->id
+                            ) }}"
+                            method="POST"
+                        >
+                            <button
+                                type="submit"
+                            >
+                                Unfavorite
+                            </button>
+                        </form>
+                    @endif
                 </li>
             @endforeach
         </ul>

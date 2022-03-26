@@ -44,6 +44,21 @@
                         $mashup->character 
                     }}"
                 />
+
+                <form 
+                    action="{{ route(
+                        'favorites.store', 
+                        Auth::user()->profile()->id,
+                        $mashup->id
+                    ) }}"
+                    method="POST"
+                >
+                    <button
+                        type="submit"
+                    >
+                        Favorite
+                    </button>
+                </form>
             </article>
         @endif
 
