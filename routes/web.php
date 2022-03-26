@@ -16,13 +16,17 @@ use App\Http\Controllers\FavoriteController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/', function () {
+    return view('home');
+});
 
 Route::controller(ProfileController::class)->prefix('profiles')->group(function () {
     Route::post('/', 'store');
