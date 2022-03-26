@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mashup;
+use App\Models\Favorite;
 use App\Http\Requests\Services\QuoteService;
 use App\Http\Requests\Services\ImageService;
 use Illuminate\Http\Request;
@@ -31,7 +32,10 @@ class MashupController extends Controller
      */
     public function index(Request $request)
     {
+        $id = Auth::user()->profile()->id;
+        $favorites = Favorite::where('profile_id', $id);
         $character = $request->input('character');
+        $finalMashups = array();
 
         if ($character) {
             $this->mashups = Mashup::where('character', $character)->orderByDesc('created_at');
@@ -39,8 +43,32 @@ class MashupController extends Controller
             $this->mashups = Mashup::all()->orderByDesc('created_at');
         }
 
+        foreach ($this->mashups as $mashup) {
+            foreach ($favorites as $favorite) {
+                if ($mashup->id == $favorite->mashup_id) {
+                    $favoritedMashup = [
+                        'id' => $mashup->id,
+                        'quote' => $mashup->quote,
+                        'character' => $mashup->character,
+                        'image' => $mashup->image,
+                        'favorited' => true,
+                    ];
+                    $finalMashups[] = $favoritedMashup;
+                } else {
+                    $unfavoritedMashup = [
+                        'id' => $mashup->id,
+                        'quote' => $mashup->quote,
+                        'character' => $mashup->character,
+                        'image' => $mashup->image,
+                        'favorited' => false,
+                    ];
+                    $finalMashups[] = $unfavoritedMashup;
+                }
+            }
+        }
+
         return view('mashups.index', [
-            'mashups' => $this->mashups,
+            'mashups' => $finalMashups,
             'character' => $character,
             'title' => 'Mashups',
         ]);
