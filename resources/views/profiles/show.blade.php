@@ -35,4 +35,20 @@
             {{ $profile->movie }}
         </p>
     </article>
+
+    @if (Auth::user()->profile()->id == $profile->id)
+        <form 
+            action="{{ route(
+                'profiles.edit', 
+                $profile->id
+            ) }}"
+            method="GET"
+        >
+            <button
+                type="submit"
+            >
+                Edit
+            </button>
+        </form>
+    @endif
 @endsection

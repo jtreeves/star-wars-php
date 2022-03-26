@@ -96,11 +96,11 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $profile = Profile::create([
-            'username' => $request['username'],
-            'avatar' => $request['avatar'],
-            'bio' => $request['bio'],
-            'location' => $request['location'],
-            'movie' => $request['movie'],
+            'username' => $request->username,
+            'avatar' => $request->avatar,
+            'bio' => $request->bio,
+            'location' => $request->location,
+            'movie' => $request->movie,
         ]);
 
         return view('profiles.show', [
