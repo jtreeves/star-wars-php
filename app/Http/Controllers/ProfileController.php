@@ -17,11 +17,10 @@ class ProfileController extends Controller
     {
         $id = $request->route('id');
         $profile = Profile::find($id);
-        $name = $profile->username;
 
         return view('profiles.show', [
             'profile' => $profile,
-            'title' => $name,
+            'title' => $profile->username,
         ]);
     }
     
@@ -55,20 +54,25 @@ class ProfileController extends Controller
         $id = $request->route('id');
         $profile = Profile::find($id);
 
-        $data = $request->validate([
-            'username' => 'required|max:255',
-            'avatar' => 'required|max:255',
-            'bio' => 'max:255',
-            'location' => 'max:255',
-            'movie' => 'max:255',
+        $request->validate([
+            'username' => ['required', 'string', 'max:255', 'unique:profiles'],
+            'avatar' => ['required', 'string', 'url', 'max:255'],
+            'bio' => ['string', 'max:255'],
+            'location' => ['string', 'max:255'],
+            'movie' => ['string', 'max:255'],
         ]);
 
-        $profile->update($data);
-        $name = $profile->username;
+        $profile->update([
+            'username' => $request->input('username'),
+            'avatar' => $request->input('avatar'),
+            'bio' => $request->input('bio'),
+            'location' => $request->input('location'),
+            'movie' => $request->input('movie'),
+        ]);
 
         return view('profiles.show', [
             'profile' => $profile,
-            'title' => $name,
+            'title' => $request->input('username'),
         ]);
     }
     
@@ -96,16 +100,28 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $profile = Profile::create([
-            'username' => $request->username,
-            'avatar' => $request->avatar,
-            'bio' => $request->bio,
-            'location' => $request->location,
-            'movie' => $request->movie,
+            'username' => $request->input('username'),
+            'avatar' => $request->input('avatar'),
+            'bio' => $request->input('bio'),
+            'location' => $request->input('location'),
+            'movie' => $request->input('movie'),
         ]);
 
         return view('profiles.show', [
             'profile' => $profile,
-            'title' => $profile->username,
+            'title' => $request->input('username'),
+        ]);
+    }
+
+    /**
+     * Show form to create a new profile.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('profiles.create', [
+            'title' => 'Create Your Profile',
         ]);
     }
 }
