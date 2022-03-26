@@ -17,9 +17,11 @@ class ProfileController extends Controller
     {
         $id = $request->route('id');
         $profile = Profile::find($id);
+        $name = $profile->username;
 
-        return view('profile.show', [
-            'profile' => $profile
+        return view('profiles.show', [
+            'profile' => $profile,
+            'title' => $name,
         ]);
     }
     
@@ -33,9 +35,12 @@ class ProfileController extends Controller
     {
         $id = $request->route('id');
         $profile = Profile::find($id);
+        $name = $profile->username;
+        $title = "{$name} - Edit";
 
-        return view('profile.edit', [
-            'profile' => $profile
+        return view('profiles.edit', [
+            'profile' => $profile,
+            'title' => $title,
         ]);
     }
     
@@ -59,9 +64,11 @@ class ProfileController extends Controller
         ]);
 
         $profile->update($data);
+        $name = $profile->username;
 
-        return view('profile.show', [
-            'profile' => $profile
+        return view('profiles.show', [
+            'profile' => $profile,
+            'title' => $name,
         ]);
     }
     
@@ -96,8 +103,9 @@ class ProfileController extends Controller
             'movie' => $request['movie'],
         ]);
 
-        return view('profile.show', [
-            'profile' => $profile
+        return view('profiles.show', [
+            'profile' => $profile,
+            'title' => $profile->username,
         ]);
     }
 }
