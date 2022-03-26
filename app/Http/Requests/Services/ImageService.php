@@ -30,7 +30,7 @@ class ImageService
     {
         $base = 'https://api.giphy.com/v1/gifs/random?';
         $key = env('GIPHY_API_KEY');
-        $full = "{$base}api_key={$key}&rating=PG&tag={$character}";
+        $full = "{$base}username=starwars&tag={$character}&api_key={$key}";
 
         $this->inputUrl = $full;
     }
