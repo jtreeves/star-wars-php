@@ -26,24 +26,28 @@ Route::get('/dashboard', function () {
 
 Route::get('/', function () {
     return view('home');
+})->name('home');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::controller(ProfileController::class)->prefix('profiles')->name('profiles.')->group(function () {
+    Route::post('/', 'store')->name('store');
+    Route::get('/{id}', 'show')->name('show');
+    Route::get('/{id}/edit', 'edit')->name('edit');
+    Route::put('/{id}', 'update')->name('update');
+    Route::delete('/{id}', 'destroy')->name('destroy');
 });
 
-Route::controller(ProfileController::class)->prefix('profiles')->group(function () {
-    Route::post('/', 'store');
-    Route::get('/{id}', 'show');
-    Route::get('/{id}/edit', 'edit');
-    Route::put('/{id}', 'update');
-    Route::delete('/{id}', 'destroy');
+Route::controller(MashupController::class)->prefix('mashups')->name('mashups.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
 });
 
-Route::controller(MashupController::class)->prefix('mashups')->group(function () {
-    Route::get('/', 'index');
-    Route::post('/', 'store');
-});
-
-Route::controller(FavoriteController::class)->prefix('favorites')->group(function () {
-    Route::post('/{profileId}/{mashupId}', 'store');
-    Route::delete('/{id}', 'destroy');
+Route::controller(FavoriteController::class)->prefix('favorites')->name('favorites.')->group(function () {
+    Route::post('/{profileId}/{mashupId}', 'store')->name('store');
+    Route::delete('/{id}', 'destroy')->name('destroy');
 });
 
 require __DIR__.'/auth.php';
