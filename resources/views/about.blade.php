@@ -1,8 +1,4 @@
-@php
-    $title = 'About';
-@endphp
-
-@extends('layouts.main', ['title' => $title])
+@extends('layouts.main', ['title' => 'About'])
 
 @section('content')
     <p>
