@@ -50,5 +50,19 @@
                 Edit
             </button>
         </form>
+
+        <form 
+            action="{{ route(
+                'profiles.destroy', 
+                $profile->id
+            ) }}"
+            method="POST"
+        >
+            <button
+                type="submit"
+            >
+                Delete
+            </button>
+        </form>
     @endif
 @endsection

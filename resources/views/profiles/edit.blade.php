@@ -16,7 +16,7 @@
             </label>
     
             <input 
-                type="search"
+                type="text"
                 name="username"
                 id="username"
                 value="{{ $profile->username }}"
@@ -31,7 +31,7 @@
             </label>
     
             <input 
-                type="search"
+                type="text"
                 name="avatar"
                 id="avatar"
                 value="{{ $profile->avatar }}"
@@ -46,7 +46,7 @@
             </label>
     
             <input 
-                type="search"
+                type="text"
                 name="bio"
                 id="bio"
                 value="{{ $profile->bio }}"
@@ -61,7 +61,7 @@
             </label>
     
             <input 
-                type="search"
+                type="text"
                 name="location"
                 id="location"
                 value="{{ $profile->location }}"
@@ -76,7 +76,7 @@
             </label>
     
             <input 
-                type="search"
+                type="text"
                 name="movie"
                 id="movie"
                 value="{{ $profile->movie }}"
