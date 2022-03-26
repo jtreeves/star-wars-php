@@ -8,16 +8,32 @@ use Illuminate\Http\Request;
 class MashupController extends Controller
 {
     /**
+     * The array of all mashups to use.
+     *
+     * @var array<int,string>
+     */
+    private $mashups = [];
+
+    /**
      * Display all mashups.
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mashups = Mashup::all()->orderByDesc('created_at');
+        $character = $request->input('character');
 
-        return view('mashups', [
-            'mashups' => $mashups
+        if ($character) {
+            $this->mashups = Mashup::where('character', $character)->orderByDesc('created_at');
+        } else {
+            $this->mashups = Mashup::all()->orderByDesc('created_at');
+        }
+
+        return view('mashups.index', [
+            'mashups' => $this->mashups,
+            'character' => $character,
+            'title' => 'Mashups',
         ]);
     }
 
