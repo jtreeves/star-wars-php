@@ -38,11 +38,12 @@ class ImageService
     /**
      * Set output to URL of image returned from API.
      *
+     * @param string $source
      * @return void
      */
-    public function setOutputUrl()
+    public function setOutputUrl($source)
     {
-        $response = Http::get($url);
+        $response = Http::get($source);
         $data = $response->json()->data;
         $image = $data->images->original->url;
 
@@ -58,8 +59,8 @@ class ImageService
     public function getImage($character)
     {
         $this->setInputUrl($character);
-        $this->setOutputUrl();
+        $this->setOutputUrl($this->inputUrl);
 
-        return $outputUrl;
+        return $this->outputUrl;
     }
 }

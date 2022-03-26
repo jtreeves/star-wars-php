@@ -11,33 +11,39 @@ class QuoteService
      *
      * @var string
      */
-    private $text = '';
+    private $fullText = '';
+    
+    /**
+     * An array with a quote key and a character key.
+     *
+     * @var array<string,string>
+     */
+    private $quoteArray = [];
 
     /**
      * Set text to value returned from API call.
      *
      * @return void
      */
-    public function setText()
+    public function setFullText()
     {
         $url = 'http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote';
         $response = Http::get($url);
         $data = $response->json()->data;
         $content = $data->content;
 
-        $this->text = $content;
+        $this->fullText = $content;
     }
 
     /**
-     * Return random quote and character.
+     * Use input to create array with separate keys for quote and character.
      *
-     * @return string
+     * @param string $input
+     * @return void
      */
-    public function getQuoteCharacter()
+    public function setQuoteArray($input)
     {
-        $this->setText();
-
-        $sections = explode(' - ', $text);
+        $sections = explode(' - ', $input);
         $quote = $sections[0];
         $character = $sections[1];
         $package = [
@@ -45,6 +51,19 @@ class QuoteService
             'character' => $character,
         ];
 
-        return $package;
+        $this->quoteArray = $package;
+    }
+
+    /**
+     * Return random quote and character.
+     *
+     * @return array<string,string>
+     */
+    public function getQuoteCharacter()
+    {
+        $this->setFullText();
+        $this->setQuoteArray($this->fullText);
+
+        return $this->quoteArray;
     }
 }
