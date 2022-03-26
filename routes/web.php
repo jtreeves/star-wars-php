@@ -34,6 +34,7 @@ Route::get('/about', function () {
 
 Route::controller(ProfileController::class)->prefix('profiles')->name('profiles.')->group(function () {
     Route::post('/', 'store')->name('store');
+    Route::get('/new', 'create')->name('create');
     Route::get('/{id}', 'show')->name('show');
     Route::get('/{id}/edit', 'edit')->name('edit');
     Route::put('/{id}', 'update')->name('update');
