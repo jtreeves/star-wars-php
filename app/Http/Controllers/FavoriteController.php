@@ -15,7 +15,7 @@ class FavoriteController extends Controller
     private Mashup $mashup;
 
     // Dispatch event to star mashup
-    public function star(Request $request): RedirectRequest
+    public function star(Request $request): RedirectResponse
     {
         $id = $request->route('mashupId');
         $this->mashup = Mashup::find($id);
@@ -26,7 +26,7 @@ class FavoriteController extends Controller
     }
     
     // Dispatch event to unstar mashup
-    public function unstar(Request $request): RedirectRequest
+    public function unstar(Request $request): RedirectResponse
     {
         $id = $request->route('mashupId');
         $this->mashup = Mashup::find($id);

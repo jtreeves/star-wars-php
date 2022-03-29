@@ -11,7 +11,7 @@ class Mashup extends Model
     use HasFactory;
 
     // The attributes that are mass assignable
-    protected array $fillable = [
+    protected $fillable = [
         'quote',
         'character',
         'image',

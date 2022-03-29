@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class MashupController extends Controller
 {
     // The array of all mashups to use
-    private array $mashups;
+    private $mashups;
 
     // Display all mashups
     public function index(Request $request): View
