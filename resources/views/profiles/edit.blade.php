@@ -8,6 +8,8 @@
         ) }}"
         method="POST"
     >
+        @csrf
+        
         <article>
             <label 
                 for="username"

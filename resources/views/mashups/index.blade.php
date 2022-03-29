@@ -5,6 +5,8 @@
         action="{{ route('mashups.index') }}"
         method="GET"
     >
+        @csrf
+
         <label 
             for="character"
         >
@@ -25,7 +27,7 @@
         </button>
     </form>
 
-    @if ($mashups->isNotEmpty())
+    @if (count($mashups) != 0)
         <ul>
             @foreach ($mashups as $mashup)
                 <li>
@@ -34,7 +36,7 @@
                     </blockquote>
             
                     <span>
-                        —{{ $mashup->character }}
+                        — {{ $mashup->character }}
                     </span>
             
                     <img 
@@ -44,15 +46,19 @@
                         }}"
                     />
 
-                    @if (!$mashup->isFavorited)
+                    @if (!$mashup->profiles->contains(
+                        'id', 
+                        Auth::user()->profile->id
+                    ))
                         <form 
                             action="{{ route(
-                                'favorites.store', 
-                                Auth::user()->profile()->id,
+                                'events.star', 
                                 $mashup->id
                             ) }}"
-                            method="POST"
+                            method="GET"
                         >
+                            @csrf
+                
                             <button
                                 type="submit"
                             >
@@ -62,12 +68,13 @@
                     @else
                         <form 
                             action="{{ route(
-                                'favorites.destroy', 
-                                Auth::user()->profile()->id,
+                                'events.unstar', 
                                 $mashup->id
                             ) }}"
-                            method="POST"
+                            method="GET"
                         >
+                            @csrf
+                
                             <button
                                 type="submit"
                             >

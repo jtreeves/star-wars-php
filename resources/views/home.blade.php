@@ -7,7 +7,7 @@
 
     @if (!Auth::check())
         <form 
-            action="{{ route(register) }}"
+            action="{{ route('register') }}"
             method="GET"
         >
             <button
@@ -16,9 +16,20 @@
                 Sign Up
             </button>
         </form>
-    @elseif (!Auth::user()->profile()->id)
+        
         <form 
-            action="{{ route(profiles.create) }}"
+            action="{{ route('login') }}"
+            method="GET"
+        >
+            <button
+                type="submit"
+            >
+                Log In
+            </button>
+        </form>
+    @elseif (Auth::user()->profile()->count() == 0)
+        <form 
+            action="{{ route('profiles.create') }}"
             method="GET"
         >
             <button
@@ -28,44 +39,12 @@
             </button>
         </form>
     @else
-        @if ($mashup->quote)
-            <article>
-                <blockquote>
-                    {{ $mashup->quote }}
-                </blockquote>
-        
-                <span>
-                    —{{ $mashup->character }}
-                </span>
-        
-                <img 
-                    src="{{ $mashup->image }}"
-                    alt="Star Wars {{ 
-                        $mashup->character 
-                    }}"
-                />
-
-                <form 
-                    action="{{ route(
-                        'favorites.store', 
-                        Auth::user()->profile()->id,
-                        $mashup->id
-                    ) }}"
-                    method="POST"
-                >
-                    <button
-                        type="submit"
-                    >
-                        Favorite
-                    </button>
-                </form>
-            </article>
-        @endif
-
         <form 
-            action="{{ route(mashups.store) }}"
+            action="{{ route('mashups.store') }}"
             method="POST"
         >
+            @csrf
+
             <button
                 type="submit"
             >

@@ -22,7 +22,7 @@
         >
 
         <title>
-            @config('app.name') - {{ $title }}
+            {{ @config('app.name') }} - {{ $title }}
         </title>
 
         <link 

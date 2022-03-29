@@ -5,6 +5,8 @@
         action="{{ route('profiles.store') }}"
         method="POST"
     >
+        @csrf
+        
         <article>
             <label 
                 for="username"

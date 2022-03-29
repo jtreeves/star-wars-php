@@ -1,7 +1,3 @@
-@php
-    $id = Auth::user()->id;
-@endphp
-
 <nav>
     <ul>
         <li>
@@ -16,19 +12,24 @@
             </a>
         </li>
 
-        <li>
-            <a href="{{ route(
-                'profiles.show', 
-                ['id' => $id]
-            ) }}">
-                Profile
-            </a>
-        </li>
+        @if (
+            Auth::check() && 
+            Auth::user()->profile()->count() != 0
+        )
+            <li>
+                <a href="{{ route(
+                    'profiles.show', 
+                    Auth::user()->profile->id
+                ) }}">
+                    Profile
+                </a>
+            </li>
 
-        <li>
-            <a href="{{ route('mashups.index') }}">
-                Mashups
-            </a>
-        </li>
+            <li>
+                <a href="{{ route('mashups.index') }}">
+                    Mashups
+                </a>
+            </li>
+        @endif
     </ul>
 </nav>
