@@ -11,14 +11,14 @@ class QuoteService
      *
      * @var string
      */
-    private $fullText = '';
+    private $fullText;
     
     /**
      * An array with a quote key and a character key.
      *
      * @var array<string,string>
      */
-    private $quoteArray = [];
+    private $quoteArray;
 
     /**
      * Set text to value returned from API call.
@@ -28,9 +28,9 @@ class QuoteService
     public function setFullText()
     {
         $url = 'http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote';
-        $response = Http::get($url);
-        $data = $response->json()->data;
-        $content = $data->content;
+        $response = Http::withoutVerifying()->get($url);
+        $json = $response->json();
+        $content = $json['content'];
 
         $this->fullText = $content;
     }
@@ -43,15 +43,20 @@ class QuoteService
      */
     public function setQuoteArray($input)
     {
-        $sections = explode(' - ', $input);
-        $quote = $sections[0];
-        $character = $sections[1];
-        $package = [
-            'quote' => $quote,
-            'character' => $character,
-        ];
+        $sections = explode(' — ', $input);
 
-        $this->quoteArray = $package;
+        if (count($sections) != 2) {
+            $this->getQuoteCharacter();
+        } else {
+            $quote = $sections[0];
+            $character = $sections[1];
+            $package = [
+                'quote' => $quote,
+                'character' => $character,
+            ];
+    
+            $this->quoteArray = $package;
+        }
     }
 
     /**
