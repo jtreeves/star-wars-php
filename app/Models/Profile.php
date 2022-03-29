@@ -15,6 +15,7 @@ class Profile extends Model
      * @var array<int,string>
      */
     protected $fillable = [
+        'user_id',
         'username',
         'bio',
         'location',
@@ -39,6 +40,6 @@ class Profile extends Model
     */
     public function mashups()
     {
-        return $this->belongsToMany(Mashup::class, 'favorites', 'profile_id', 'mashup_id');
+        return $this->belongsToMany(Mashup::class);
     }
 }
