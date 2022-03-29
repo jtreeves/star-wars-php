@@ -11,14 +11,14 @@ class ImageService
      *
      * @var string
      */
-    private $inputUrl = 'Star Wars';
+    private $inputUrl;
     
     /**
      * The URL for the image returned by the API.
      *
      * @var string
      */
-    private $outputUrl = '';
+    private $outputUrl;
 
     /**
      * Set input URL for API call by using character.
@@ -28,9 +28,12 @@ class ImageService
      */
     public function setInputUrl($character)
     {
+        $lowerCharacter = strtolower($character);
+        $dashedCharacter = str_replace(' ', '-', $lowerCharacter);
+        $finalCharacter = str_replace('.', '', $dashedCharacter);
         $base = 'https://api.giphy.com/v1/gifs/random?';
         $key = env('GIPHY_API_KEY');
-        $full = "{$base}username=starwars&tag={$character}&api_key={$key}";
+        $full = "{$base}username=starwars&tag={$finalCharacter}&api_key={$key}";
 
         $this->inputUrl = $full;
     }
@@ -44,10 +47,13 @@ class ImageService
     public function setOutputUrl($source)
     {
         $response = Http::get($source);
-        $data = $response->json()->data;
-        $image = $data->images->original->url;
+        $json = $response->json();
+        $data = $json['data'];
+        $images = $data['images'];
+        $original = $images['original'];
+        $url = $original['url'];
 
-        $this->outputUrl = $image;
+        $this->outputUrl = $url;
     }
 
     /**
