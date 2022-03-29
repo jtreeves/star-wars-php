@@ -8,14 +8,16 @@ use App\Events\UnstarMashup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 
-class EventController extends Controller
+class FavoriteController extends Controller
 {
+    private $mashup;
+
     public function star(Request $request)
     {
         $id = $request->route('mashupId');
-        $mashup = Mashup::find($id);
+        $this->mashup = Mashup::find($id);
 
-        Event::dispatch(new StarMashup($mashup));
+        Event::dispatch(new StarMashup($this->mashup));
 
         return back();
     }
@@ -23,9 +25,9 @@ class EventController extends Controller
     public function unstar(Request $request)
     {
         $id = $request->route('mashupId');
-        $mashup = Mashup::find($id);
+        $this->mashup = Mashup::find($id);
 
-        Event::dispatch(new UnstarMashup($mashup));
+        Event::dispatch(new UnstarMashup($this->mashup));
 
         return back();
     }

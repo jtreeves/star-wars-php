@@ -18,7 +18,10 @@
         />
 
         <form 
-            action="{{ route('events.star', $mashup->id) }}"
+            action="{{ route(
+                'favorites.star', 
+                $mashup->id
+            ) }}"
             method="GET"
         >
             @csrf

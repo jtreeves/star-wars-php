@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MashupController;
-use App\Http\Controllers\EventController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ Route::controller(MashupController::class)->prefix('mashups')->name('mashups.')-
     Route::post('/', 'store')->name('store');
 });
 
-Route::controller(EventController::class)->prefix('events')->name('events.')->group(function () {
+Route::controller(FavoriteController::class)->prefix('favorites')->name('favorites.')->group(function () {
     Route::get('/star/{mashupId}', 'star')->name('star');
     Route::get('/unstar/{mashupId}', 'unstar')->name('unstar');
 });

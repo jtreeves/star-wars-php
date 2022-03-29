@@ -52,7 +52,7 @@
                     ))
                         <form 
                             action="{{ route(
-                                'events.star', 
+                                'favorites.star', 
                                 $mashup->id
                             ) }}"
                             method="GET"
@@ -68,7 +68,7 @@
                     @else
                         <form 
                             action="{{ route(
-                                'events.unstar', 
+                                'favorites.unstar', 
                                 $mashup->id
                             ) }}"
                             method="GET"
