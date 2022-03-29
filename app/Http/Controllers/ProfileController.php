@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -100,6 +101,7 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $profile = Profile::create([
+            'user_id' => Auth::user()->id,
             'username' => $request->input('username'),
             'avatar' => $request->input('avatar'),
             'bio' => $request->input('bio'),
