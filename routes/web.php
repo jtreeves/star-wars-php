@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MashupController;
-use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +15,6 @@ use App\Http\Controllers\FavoriteController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 Route::get('/', function () {
     return view('home');
@@ -43,12 +35,13 @@ Route::controller(ProfileController::class)->prefix('profiles')->name('profiles.
 
 Route::controller(MashupController::class)->prefix('mashups')->name('mashups.')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/{id}', 'show')->name('show');
     Route::post('/', 'store')->name('store');
 });
 
-Route::controller(FavoriteController::class)->prefix('favorites')->name('favorites.')->group(function () {
-    Route::post('/{profileId}/{mashupId}', 'store')->name('store');
-    Route::delete('/{id}', 'destroy')->name('destroy');
+Route::controller(EventController::class)->prefix('events')->name('events.')->group(function () {
+    Route::get('/star/{mashupId}', 'star')->name('star');
+    Route::get('/unstar/{mashupId}', 'unstar')->name('unstar');
 });
 
 require __DIR__.'/auth.php';
