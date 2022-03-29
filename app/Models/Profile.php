@@ -3,18 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int,string>
-     */
-    protected $fillable = [
+    // The attributes that are mass assignable
+    protected array $fillable = [
         'user_id',
         'username',
         'bio',
@@ -23,22 +21,14 @@ class Profile extends Model
         'movie',
     ];
 
-    /**
-    * The relationship to the profile's user.
-    *
-    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-    */
-    public function user()
+    // The relationship to the profile's user
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-    * The relationship to the profile's mashups.
-    *
-    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    */
-    public function mashups()
+    // The relationship to the profile's mashups
+    public function mashups(): BelongsToMany
     {
         return $this->belongsToMany(Mashup::class);
     }

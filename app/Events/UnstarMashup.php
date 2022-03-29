@@ -15,24 +15,17 @@ class UnstarMashup implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $mashup;
+    // The mashup used by the event
+    public Mashup $mashup;
 
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
+    // Create a new event instance
     public function __construct(Mashup $mashup)
     {
         $this->mashup = $mashup;
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
-     */
-    public function broadcastOn()
+    // Get the channels the event should broadcast on
+    public function broadcastOn(): Channel
     {
         return new PrivateChannel('unstarring');
     }

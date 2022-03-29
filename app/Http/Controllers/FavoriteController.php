@@ -6,13 +6,16 @@ use App\Models\Mashup;
 use App\Events\StarMashup;
 use App\Events\UnstarMashup;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Event;
 
 class FavoriteController extends Controller
 {
-    private $mashup;
+    // Mashup to use throughout controller
+    private Mashup $mashup;
 
-    public function star(Request $request)
+    // Dispatch event to star mashup
+    public function star(Request $request): RedirectRequest
     {
         $id = $request->route('mashupId');
         $this->mashup = Mashup::find($id);
@@ -22,7 +25,8 @@ class FavoriteController extends Controller
         return back();
     }
     
-    public function unstar(Request $request)
+    // Dispatch event to unstar mashup
+    public function unstar(Request $request): RedirectRequest
     {
         $id = $request->route('mashupId');
         $this->mashup = Mashup::find($id);

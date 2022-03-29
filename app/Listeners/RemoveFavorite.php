@@ -10,25 +10,17 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class RemoveFavorite
 {
-    private $profile;
+    // Profile used by the listener
+    private Profile $profile;
 
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
+    // Create the event listener
     public function __construct()
     {
         $this->profile = Profile::find(Auth::user()->profile->id);
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param  \App\Events\UnstarMashup  $event
-     * @return void
-     */
-    public function handle(UnstarMashup $event)
+    // Handle the event
+    public function handle(UnstarMashup $event): void
     {
         $this->profile->mashups()->detach($event->mashup);
     }

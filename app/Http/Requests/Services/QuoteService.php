@@ -6,26 +6,14 @@ use Illuminate\Support\Facades\Http;
 
 class QuoteService
 {
-    /**
-     * The full text, containing both the quote and the character who said it.
-     *
-     * @var string
-     */
-    private $fullText;
+    // The full text, including the quote and the character
+    private string $fullText;
     
-    /**
-     * An array with a quote key and a character key.
-     *
-     * @var array<string,string>
-     */
-    private $quoteArray;
+    // An array with a quote key and a character key
+    private array $quoteArray;
 
-    /**
-     * Set text to value returned from API call.
-     *
-     * @return void
-     */
-    public function setFullText()
+    // Set text to value returned from API call
+    public function setFullText(): void
     {
         $url = 'http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote';
         $response = Http::withoutVerifying()->get($url);
@@ -35,13 +23,8 @@ class QuoteService
         $this->fullText = $content;
     }
 
-    /**
-     * Use input to create array with separate keys for quote and character.
-     *
-     * @param string $input
-     * @return void
-     */
-    public function setQuoteArray($input)
+    // Use input to create array with separate keys for quote and character
+    public function setQuoteArray(string $input): void
     {
         $sections = explode(' — ', $input);
 
@@ -59,12 +42,8 @@ class QuoteService
         }
     }
 
-    /**
-     * Return random quote and character.
-     *
-     * @return array<string,string>
-     */
-    public function getQuoteCharacter()
+    // Return random quote and character
+    public function getQuoteCharacter(): array
     {
         $this->setFullText();
         $this->setQuoteArray($this->fullText);

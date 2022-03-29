@@ -3,29 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Mashup extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int,string>
-     */
-    protected $fillable = [
+    // The attributes that are mass assignable
+    protected array $fillable = [
         'quote',
         'character',
         'image',
     ];
 
-    /**
-    * The relationship to the mashup's profiles.
-    *
-    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    */
-    public function profiles()
+    // Establish the relationship to the mashup's profiles
+    public function profiles(): BelongsToMany
     {
         return $this->belongsToMany(Profile::class);
     }

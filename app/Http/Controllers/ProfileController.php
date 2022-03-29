@@ -4,17 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display profile details for single user.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\View\View
-     */
-    public function show(Request $request)
+    // Display profile details for single user
+    public function show(Request $request): View
     {
         $id = $request->route('id');
         $profile = Profile::find($id);
@@ -25,13 +22,8 @@ class ProfileController extends Controller
         ]);
     }
     
-    /**
-     * Display edit form for profile.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\View\View
-     */
-    public function edit(Request $request)
+    // Display edit form for profile
+    public function edit(Request $request): View
     {
         $id = $request->route('id');
         $profile = Profile::find($id);
@@ -44,13 +36,8 @@ class ProfileController extends Controller
         ]);
     }
     
-    /**
-     * Persist changes to the profile to the database.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\View\View
-     */
-    public function update(Request $request)
+    // Persist changes to the profile to the database
+    public function update(Request $request): View
     {
         $id = $request->route('id');
         $profile = Profile::find($id);
@@ -77,13 +64,8 @@ class ProfileController extends Controller
         ]);
     }
     
-    /**
-     * Delete profile.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy(Request $request)
+    // Delete profile
+    public function destroy(Request $request): RedirectResponse
     {
         $id = $request->route('id');
         
@@ -92,13 +74,8 @@ class ProfileController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Store a new profile.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\View\View
-     */
-    public function store(Request $request)
+    // Store a new profile
+    public function store(Request $request): View
     {
         $profile = Profile::create([
             'user_id' => Auth::user()->id,
@@ -115,12 +92,8 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Show form to create a new profile.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
+    // Show form to create a new profile
+    public function create(): View
     {
         return view('profiles.create', [
             'title' => 'Create Your Profile',

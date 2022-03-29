@@ -10,25 +10,17 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class AddFavorite
 {
-    private $profile;
+    // The profile used by the listener
+    private Profile $profile;
 
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
+    // Create the event listener
     public function __construct()
     {
         $this->profile = Profile::find(Auth::user()->profile->id);
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param  \App\Events\StarMashup  $event
-     * @return void
-     */
-    public function handle(StarMashup $event)
+    // Handle the event
+    public function handle(StarMashup $event): void
     {   
         $this->profile->mashups()->attach($event->mashup);
     }

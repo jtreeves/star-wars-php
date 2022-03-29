@@ -6,24 +6,17 @@ use App\Models\Mashup;
 use App\Http\Requests\Services\QuoteService;
 use App\Http\Requests\Services\ImageService;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 
 class MashupController extends Controller
 {
-    /**
-     * The array of all mashups to use.
-     *
-     * @var array<int,string>
-     */
-    private $mashups;
+    // The array of all mashups to use
+    private array $mashups;
 
-    /**
-     * Display all mashups.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\View\View
-     */
-    public function index(Request $request)
+    // Display all mashups
+    public function index(Request $request): View
     {
         $character = $request->input('character');
 
@@ -48,12 +41,8 @@ class MashupController extends Controller
         ]);
     }
 
-    /**
-     * Generate then store a new mashup.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store()
+    // Generate then store a new mashup
+    public function store(): RedirectResponse
     {
         $quoteMaker = new QuoteService();
         $imageMaker = new ImageService();
@@ -75,13 +64,8 @@ class MashupController extends Controller
         );
     }
 
-    /**
-     * Show the new mashup.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\View\View
-     */
-    public function show(Request $request)
+    // Show the new mashup
+    public function show(Request $request): View
     {
         $id = $request->route('id');
         $mashup = Mashup::find($id);
