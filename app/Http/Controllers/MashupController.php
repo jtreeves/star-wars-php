@@ -9,11 +9,12 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 
 class MashupController extends Controller
 {
     // The array of all mashups to use
-    private $mashups;
+    private Collection $mashups;
 
     // Display all mashups
     public function index(Request $request): View
