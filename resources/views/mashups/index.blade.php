@@ -27,76 +27,8 @@
         </button>
     </form>
 
-    @if (count($mashups) != 0)
-        <ul>
-            @foreach ($mashups as $mashup)
-                <li>
-                    <blockquote>
-                        {{ $mashup->quote }}
-                    </blockquote>
-            
-                    <span>
-                        — {{ $mashup->character }}
-                    </span>
-            
-                    <img 
-                        src="{{ $mashup->image }}"
-                        alt="Star Wars {{ 
-                            $mashup->character 
-                        }}"
-                    />
-
-                    <a href="{{ route(
-                        'mashups.show',
-                        $mashup->id
-                    ) }}">
-                        <p>
-                            View More Details
-                        </p>
-                    </a>
-
-                    @if (!$mashup->profiles->contains(
-                        'id', 
-                        Auth::user()->profile->id
-                    ))
-                        <form 
-                            action="{{ route(
-                                'favorites.star', 
-                                $mashup->id
-                            ) }}"
-                            method="GET"
-                        >
-                            @csrf
-                
-                            <button
-                                type="submit"
-                            >
-                                Favorite
-                            </button>
-                        </form>
-                    @else
-                        <form 
-                            action="{{ route(
-                                'favorites.unstar', 
-                                $mashup->id
-                            ) }}"
-                            method="GET"
-                        >
-                            @csrf
-                
-                            <button
-                                type="submit"
-                            >
-                                Unfavorite
-                            </button>
-                        </form>
-                    @endif
-                </li>
-            @endforeach
-        </ul>
-    @else
-        <p>
-            No mashups found.
-        </p>
-    @endif
+    <x-list 
+        :mashups="$mashups"
+        message="No mashups found."
+    />
 @endsection
