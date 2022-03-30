@@ -26,7 +26,19 @@ class QuoteService
     // Use input to create array with separate keys for quote and character
     public function setQuoteArray(string $input): void
     {
-        $sections = explode(' — ', $input);
+        $sectionsDash = explode(' — ', $input);
+        $sectionsDoubleHypen = explode(' -- ', $input);
+        $sectionsHypen = explode(' - ', $input);
+
+        if (count($sectionsDash) == 2) {
+            $sections = $sectionsDash;
+        } else if (count($sectionsDoubleHypen) == 2) {
+            $sections = $sectionsDoubleHypen;
+        } else if (count($sectionsHypen) == 2) {
+            $sections = $sectionsHypen;
+        } else {
+            $sections = [];
+        }
 
         if (count($sections) != 2) {
             $this->getQuoteCharacter();
