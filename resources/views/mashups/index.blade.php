@@ -46,6 +46,15 @@
                         }}"
                     />
 
+                    <a href="{{ route(
+                        'mashups.show',
+                        $mashup->id
+                    ) }}">
+                        <p>
+                            View More Details
+                        </p>
+                    </a>
+
                     @if (!$mashup->profiles->contains(
                         'id', 
                         Auth::user()->profile->id
