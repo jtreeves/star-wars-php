@@ -35,6 +35,16 @@
             {{ $profile->movie }}
         </p>
     </article>
+    
+    <article>
+        <h2>
+            Color
+        </h2>
+    
+        <p>
+            {{ $profile->color }}
+        </p>
+    </article>
 
     <x-list 
         :mashups="$profile->mashups"

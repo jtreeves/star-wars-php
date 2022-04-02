@@ -42,6 +42,21 @@
         
         <article>
             <label 
+                for="color"
+            >
+                Color
+            </label>
+    
+            <input 
+                type="text"
+                name="color"
+                id="color"
+                value="{{ $profile->color }}"
+            />
+        </article>
+        
+        <article>
+            <label 
                 for="bio"
             >
                 Bio
