@@ -37,19 +37,10 @@ class ProfileController extends Controller
     }
     
     // Persist changes to the profile to the database
-    public function update(Request $request): View
+    public function update(Request $request): RedirectResponse
     {
         $id = $request->route('id');
         $profile = Profile::find($id);
-
-        $request->validate([
-            'username' => ['required', 'string', 'max:25', 'unique:profiles'],
-            'avatar' => ['required', 'string', 'max:25'],
-            'color' => ['required', 'string', 'max:25'],
-            'bio' => ['string', 'max:255'],
-            'location' => ['string', 'max:255'],
-            'movie' => ['string', 'max:255'],
-        ]);
 
         $profile->update([
             'username' => $request->get('username'),
@@ -60,10 +51,10 @@ class ProfileController extends Controller
             'movie' => $request->get('movie'),
         ]);
 
-        return view('profiles.show', [
-            'profile' => $profile,
-            'title' => $request->input('username'),
-        ]);
+        return redirect()->route(
+            'profiles.show', 
+            $profile->id
+        );
     }
     
     // Delete profile
