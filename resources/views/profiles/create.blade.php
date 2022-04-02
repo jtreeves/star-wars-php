@@ -27,12 +27,20 @@
             >
                 Avatar
             </label>
-    
-            <input 
-                type="text"
-                name="avatar"
+
+            <select 
+                name="avatar" 
                 id="avatar"
-            />
+            >
+                @foreach (config('constants.avatars') as $name => $image)
+                    <option value="{{ $name }}">
+                        <img 
+                            src="{{ $image }}" 
+                            alt="{{ $name }}"
+                        />
+                    </option>
+                @endforeach
+            </select>
         </article>
         
         <article>
@@ -41,12 +49,25 @@
             >
                 Color
             </label>
-    
-            <input 
-                type="text"
-                name="color"
+
+            <select 
+                name="color" 
                 id="color"
-            />
+            >
+                @foreach (config('constants.colors') as $word => $hex)
+                    <option value="{{ $word }}">
+                        <span>{{ $word }}</span>
+
+                        <div
+                            style="
+                                background-color: {{ $hex }};
+                                height: 100px;
+                                width: 100px;
+                            "
+                        />
+                    </option>
+                @endforeach
+            </select>
         </article>
         
         <article>

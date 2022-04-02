@@ -2,8 +2,8 @@
 
 @section('content')
     <img 
-        src="{{ $profile->avatar }}" 
-        alt="{{ $profile->username }}"
+        src="{{ config('constants.avatars')[$profile->avatar] }}" 
+        alt="{{ $profile->avatar }}"
     />
 
     <article>

@@ -31,13 +31,32 @@
             >
                 Avatar
             </label>
-    
-            <input 
-                type="text"
-                name="avatar"
+
+            <select 
+                name="avatar" 
                 id="avatar"
-                value="{{ $profile->avatar }}"
-            />
+            >
+                @foreach (config('constants.avatars') as $name => $image)
+                    @if ($name == $profile->avatar)
+                        <option 
+                            value="{{ $name }}" 
+                            selected
+                        >
+                            <img 
+                                src="{{ $image }}" 
+                                alt="{{ $name }}"
+                            />
+                        </option>
+                    @else
+                        <option value="{{ $name }}">
+                            <img 
+                                src="{{ $image }}" 
+                                alt="{{ $name }}"
+                            />
+                        </option>
+                    @endif
+                @endforeach
+            </select>
         </article>
         
         <article>
@@ -46,13 +65,42 @@
             >
                 Color
             </label>
-    
-            <input 
-                type="text"
-                name="color"
+
+            <select 
+                name="color" 
                 id="color"
-                value="{{ $profile->color }}"
-            />
+            >
+                @foreach (config('constants.colors') as $word => $hex)
+                    @if ($word == $profile->color)
+                        <option 
+                            value="{{ $word }}" 
+                            selected
+                        >
+                            <span>{{ $word }}</span>
+
+                            <div
+                                style="
+                                    background-color: {{ $hex }};
+                                    height: 100px;
+                                    width: 100px;
+                                "
+                            />
+                        </option>
+                    @else
+                        <option value="{{ $word }}">
+                            <span>{{ $word }}</span>
+
+                            <div
+                                style="
+                                    background-color: {{ $hex }};
+                                    height: 100px;
+                                    width: 100px;
+                                "
+                            />
+                        </option>
+                    @endif
+                @endforeach
+            </select>
         </article>
         
         <article>
