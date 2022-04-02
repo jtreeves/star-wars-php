@@ -45,34 +45,45 @@
             Avatar
         </label>
 
-        <select 
-            name="avatar" 
-            id="avatar"
-        >
-            @foreach (config('constants.avatars') as $name => $image)
-                @if (
-                    $isEditing && 
-                    $name == $profile->avatar
-                )
-                    <option 
-                        value="{{ $name }}" 
-                        selected
-                    >
-                        <img 
-                            src="{{ $image }}" 
-                            alt="{{ $name }}"
-                        />
-                    </option>
-                @else
-                    <option value="{{ $name }}">
-                        <img 
-                            src="{{ $image }}" 
-                            alt="{{ $name }}"
-                        />
-                    </option>
-                @endif
-            @endforeach
-        </select>
+        @foreach (config('constants.avatars') as $name => $image)
+            @if (
+                $isEditing && 
+                $name == $profile->avatar
+            )
+                <input 
+                    type="radio"
+                    name="avatar"
+                    id="{{ $name }}"
+                    value="{{ $name }}"
+                    checked
+                />
+        
+                <label 
+                    for="{{ $name }}"
+                >
+                    <img 
+                        src="{{ $image }}" 
+                        alt="{{ $name }}"
+                    />
+                </label>
+            @else
+                <input 
+                    type="radio"
+                    name="avatar"
+                    id="{{ $name }}"
+                    value="{{ $name }}"
+                />
+        
+                <label 
+                    for="{{ $name }}"
+                >
+                    <img 
+                        src="{{ $image }}" 
+                        alt="{{ $name }}"
+                    />
+                </label>
+            @endif
+        @endforeach
     </article>
     
     <article>
@@ -82,44 +93,41 @@
             Color
         </label>
 
-        <select 
-            name="color" 
-            id="color"
-        >
-            @foreach (config('constants.colors') as $word => $hex)
-                @if (
-                    $isEditing &&
-                    $word == $profile->color
-                )
-                    <option 
-                        value="{{ $word }}" 
-                        selected
-                    >
-                        <span>{{ $word }}</span>
-
-                        <div
-                            style="
-                                background-color: {{ $hex }};
-                                height: 100px;
-                                width: 100px;
-                            "
-                        />
-                    </option>
-                @else
-                    <option value="{{ $word }}">
-                        <span>{{ $word }}</span>
-
-                        <div
-                            style="
-                                background-color: {{ $hex }};
-                                height: 100px;
-                                width: 100px;
-                            "
-                        />
-                    </option>
-                @endif
-            @endforeach
-        </select>
+        @foreach (config('constants.colors') as $word => $hex)
+            @if (
+                $isEditing &&
+                $word == $profile->color
+            )
+                <input 
+                    type="radio"
+                    name="color"
+                    id="{{ $word }}"
+                    value="{{ $word }}"
+                    checked
+                />
+        
+                <label 
+                    for="{{ $word }}"
+                    style="background-color: {{ $hex }};"
+                >
+                    {{ $word }}
+                </label>
+            @else
+                <input 
+                    type="radio"
+                    name="color"
+                    id="{{ $word }}"
+                    value="{{ $word }}"
+                />
+        
+                <label 
+                    for="{{ $word }}"
+                    style="background-color: {{ $hex }};"
+                >
+                    {{ $word }}
+                </label>
+            @endif
+        @endforeach
     </article>
     
     <article>
