@@ -4,8 +4,12 @@ namespace App\Providers;
 
 use App\Events\StarMashup;
 use App\Events\UnstarMashup;
+use App\Events\FollowProfile;
+use App\Events\UnfollowProfile;
 use App\Listeners\AddFavorite;
 use App\Listeners\RemoveFavorite;
+use App\Listeners\AddFan;
+use App\Listeners\RemoveFan;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,6 +31,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         UnstarMashup::class => [
             RemoveFavorite::class,
+        ],
+        FollowProfile::class => [
+            AddFan::class,
+        ],
+        UnfollowProfile::class => [
+            RemoveFan::class,
         ],
     ];
 
