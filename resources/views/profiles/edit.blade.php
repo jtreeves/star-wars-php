@@ -9,6 +9,7 @@
         method="POST"
     >
         @csrf
+        @method('PUT')
         
         <article>
             <label 
