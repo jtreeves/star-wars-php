@@ -18,6 +18,7 @@ class Profile extends Model
         'bio',
         'location',
         'avatar',
+        'color',
         'movie',
     ];
 

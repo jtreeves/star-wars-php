@@ -45,6 +45,7 @@ class ProfileController extends Controller
         $request->validate([
             'username' => ['required', 'string', 'max:255', 'unique:profiles'],
             'avatar' => ['required', 'string', 'url', 'max:255'],
+            'color' => ['required', 'string', 'max:25'],
             'bio' => ['string', 'max:255'],
             'location' => ['string', 'max:255'],
             'movie' => ['string', 'max:255'],
@@ -53,6 +54,7 @@ class ProfileController extends Controller
         $profile->update([
             'username' => $request->input('username'),
             'avatar' => $request->input('avatar'),
+            'color' => $request->input('color'),
             'bio' => $request->input('bio'),
             'location' => $request->input('location'),
             'movie' => $request->input('movie'),
@@ -81,6 +83,7 @@ class ProfileController extends Controller
             'user_id' => Auth::user()->id,
             'username' => $request->input('username'),
             'avatar' => $request->input('avatar'),
+            'color' => $request->input('color'),
             'bio' => $request->input('bio'),
             'location' => $request->input('location'),
             'movie' => $request->input('movie'),
