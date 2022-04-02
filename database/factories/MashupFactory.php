@@ -16,10 +16,16 @@ class MashupFactory extends Factory
      */
     public function definition()
     {
+        $avatars = config('constants.avatars');
+        $names = array_keys($avatars);
+        $random = rand(0, 9);
+        $character = $names[$random];
+        $image = $avatars[$character];
+
         return [
             'quote' => $this->faker->sentence(10, true),
-            'character' => $this->faker->name(),
-            'image' => $this->faker->imageUrl()
+            'character' => $character,
+            'image' => $image,
         ];
     }
 }

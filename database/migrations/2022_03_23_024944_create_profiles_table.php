@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('bio');
             $table->string('location');
             $table->string('avatar');
+            $table->string('color');
             $table->string('movie');
 
             $table->timestamps();

@@ -17,12 +17,21 @@ class ProfileFactory extends Factory
      */
     public function definition()
     {
+        $avatars = config('constants.avatars');
+        $colors = config('constants.colors');
+        $names = array_keys($avatars);
+        $colorWords = array_keys($colors);
+        $random = rand(0, 9);
+        $image = $avatars[$names[$random]];
+        $hex = $colors[$colorWords[$random]];
+
         return [
             'user_id' => User::factory()->create()->id,
             'username' => $this->faker->userName(),
             'bio' => $this->faker->sentence(10, true),
             'location' => $this->faker->city(),
-            'avatar' => $this->faker->imageUrl(),
+            'avatar' => $image,
+            'color' => $hex,
             'movie' => $this->faker->sentence(3, true)
         ];
     }
