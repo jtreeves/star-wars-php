@@ -21,19 +21,11 @@ class DatabaseSeeder extends Seeder
             MashupSeeder::class
         ]);
 
-        $profiles = Profile::all();
-        $mashups = Mashup::all();
-
-        foreach ($profiles as $profile) {
+        foreach (Profile::all() as $profile) {
             $first = rand(1, 3);
             $second = rand(4, 6);
             $profile->mashups()->attach([$first, $second]);
-        }
-
-        foreach ($mashups as $mashup) {
-            $first = rand(1, 3);
-            $second = rand(4, 6);
-            $mashup->profiles()->attach([$first, $second]);
+            $profile->followings()->attach([$first, $second]);
         }
     }
 }
