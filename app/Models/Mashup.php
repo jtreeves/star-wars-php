@@ -20,6 +20,6 @@ class Mashup extends Model
     // Establish the relationship to the mashup's profiles
     public function profiles(): BelongsToMany
     {
-        return $this->belongsToMany(Profile::class);
+        return $this->belongsToMany(Profile::class, 'favorites', 'mashup_id', 'profile_id');
     }
 }

@@ -31,6 +31,18 @@ class Profile extends Model
     // The relationship to the profile's mashups
     public function mashups(): BelongsToMany
     {
-        return $this->belongsToMany(Mashup::class);
+        return $this->belongsToMany(Mashup::class, 'favorites', 'profile_id', 'mashup_id');
+    }
+
+    // The relationship to the profile's followers
+    public function followers(): BelongsToMany
+    {
+        return $this->belongsToMany(Profile::class, 'fans', 'following_id', 'follower_id');
+    }
+
+    // The relationship to the profile's followings
+    public function followings(): BelongsToMany
+    {
+        return $this->belongsToMany(Profile::class, 'fans', 'follower_id', 'following_id');
     }
 }
