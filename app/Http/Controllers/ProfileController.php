@@ -43,8 +43,8 @@ class ProfileController extends Controller
         $profile = Profile::find($id);
 
         $request->validate([
-            'username' => ['required', 'string', 'max:255', 'unique:profiles'],
-            'avatar' => ['required', 'string', 'url', 'max:255'],
+            'username' => ['required', 'string', 'max:25', 'unique:profiles'],
+            'avatar' => ['required', 'string', 'max:25'],
             'color' => ['required', 'string', 'max:25'],
             'bio' => ['string', 'max:255'],
             'location' => ['string', 'max:255'],
@@ -52,12 +52,12 @@ class ProfileController extends Controller
         ]);
 
         $profile->update([
-            'username' => $request->input('username'),
-            'avatar' => $request->input('avatar'),
-            'color' => $request->input('color'),
-            'bio' => $request->input('bio'),
-            'location' => $request->input('location'),
-            'movie' => $request->input('movie'),
+            'username' => $request->get('username'),
+            'avatar' => $request->get('avatar'),
+            'color' => $request->get('color'),
+            'bio' => $request->get('bio'),
+            'location' => $request->get('location'),
+            'movie' => $request->get('movie'),
         ]);
 
         return view('profiles.show', [
@@ -81,12 +81,12 @@ class ProfileController extends Controller
     {
         $profile = Profile::create([
             'user_id' => Auth::user()->id,
-            'username' => $request->input('username'),
-            'avatar' => $request->input('avatar'),
-            'color' => $request->input('color'),
-            'bio' => $request->input('bio'),
-            'location' => $request->input('location'),
-            'movie' => $request->input('movie'),
+            'username' => $request->get('username'),
+            'avatar' => $request->get('avatar'),
+            'color' => $request->get('color'),
+            'bio' => $request->get('bio'),
+            'location' => $request->get('location'),
+            'movie' => $request->get('movie'),
         ]);
 
         return view('profiles.show', [
