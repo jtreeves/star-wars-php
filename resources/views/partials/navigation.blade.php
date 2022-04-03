@@ -30,6 +30,12 @@
                     Mashups
                 </a>
             </li>
+            
+            <li>
+                <a href="{{ route('mashups.feed') }}">
+                    Feed
+                </a>
+            </li>
         @endif
     </ul>
 </nav>
