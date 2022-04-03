@@ -2,7 +2,12 @@
 
 @section('content')
     <form
-        action="{{ route('mashups.index') }}"
+        @if ($view == 'index')
+            action="{{ route('mashups.index') }}"
+        @else
+            action="{{ route('mashups.feed') }}"    
+        @endif
+        
         method="GET"
     >
         @csrf
