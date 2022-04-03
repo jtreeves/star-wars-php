@@ -20,23 +20,11 @@
     @if ($isEditing)
         @method('PUT')
     @endif
-    
-    <article>
-        <label 
-            for="username"
-        >
-            Username
-        </label>
 
-        <input 
-            type="text"
-            name="username"
-            id="username"
-            value="{{ 
-                $isEditing ? $profile->username : '' 
-            }}"
-        />
-    </article>
+    <x-labeled-input 
+        field="username"
+        :isEditing="{{ $isEditing }}"
+    />
     
     <article>
         <label 
@@ -129,57 +117,21 @@
             @endif
         @endforeach
     </article>
-    
-    <article>
-        <label 
-            for="bio"
-        >
-            Bio
-        </label>
 
-        <input 
-            type="text"
-            name="bio"
-            id="bio"
-            value="{{ 
-                $isEditing ? $profile->bio : '' 
-            }}"
-        />
-    </article>
-    
-    <article>
-        <label 
-            for="location"
-        >
-            Location
-        </label>
+    <x-labeled-input 
+        field="bio"
+        :isEditing="{{ $isEditing }}"
+    />
 
-        <input 
-            type="text"
-            name="location"
-            id="location"
-            value="{{ 
-                $isEditing ? $profile->location : '' 
-            }}"
-        />
-    </article>
-    
-    <article>
-        <label 
-            for="movie"
-        >
-            Movie
-        </label>
+    <x-labeled-input 
+        field="location"
+        :isEditing="{{ $isEditing }}"
+    />
 
-        <input 
-            type="text"
-            name="movie"
-            id="movie"
-            value="{{ 
-                $isEditing ? $profile->movie : '' 
-            }}"
-        />
-    </article>
+    <x-labeled-input 
+        field="movie"
+        :isEditing="{{ $isEditing }}"
+    />
 
     <button
         type="submit"
