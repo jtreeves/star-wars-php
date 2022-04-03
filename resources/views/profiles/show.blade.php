@@ -51,27 +51,10 @@
         message="This user has not liked any mashups."
     />
 
-    <article>
-        <h2>
-            Followers
-        </h2>
-
-        <x-profiles-list 
-            :profiles="$profile->followers"
-            message="This user does not have any followers."
-        />
-    </article>
-    
-    <article>
-        <h2>
-            Following
-        </h2>
-
-        <x-profiles-list 
-            :profiles="$profile->followings"
-            message="This user does not follow any other users."
-        />
-    </article>
+    <x-fans 
+        :followers="$profile->followers"
+        :followings="$profile->followings"
+    />
 
     @if (Auth::user()->profile->id == $profile->id)
         <form 
