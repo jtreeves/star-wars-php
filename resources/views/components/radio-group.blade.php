@@ -1,7 +1,15 @@
 @props([
     'field',
+    'selection',
     'isEditing'
 ])
+
+@php
+    $isAvatar = $field == 'avatar';
+    $avatars = config('constants.avatars');
+    $colors = config('constants.colors');
+    $constants = $isAvatar ? $avatars : $colors;
+@endphp
 
 <article>
     <label 
@@ -10,10 +18,10 @@
         {{ $field }}
     </label>
 
-    @foreach (config('constants.{{ $field }}s') as $key => $value)
+    @foreach ($constants as $key => $value)
         @if (
             $isEditing && 
-            $key == $profile->$field
+            $key == $selection
         )
             <input 
                 type="radio"
@@ -26,11 +34,11 @@
             <label 
                 for="{{ $key }}"
 
-                @if ($field == 'color')
+                @if (!$isAvatar)
                     style="background-color: {{ $value }};"
                 @endif
             >
-                @if ($field == 'avatar')
+                @if ($isAvatar)
                     <img 
                         src="{{ $value }}" 
                         alt="{{ $key }}"
@@ -50,11 +58,11 @@
             <label 
                 for="{{ $key }}"
 
-                @if ($field == 'color')
+                @if (!$isAvatar)
                     style="background-color: {{ $value }};"
                 @endif
             >
-                @if ($field == 'avatar')
+                @if ($isAvatar)
                     <img 
                         src="{{ $value }}" 
                         alt="{{ $key }}"

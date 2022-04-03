@@ -23,32 +23,38 @@
 
     <x-labeled-input 
         field="username"
-        :isEditing="{{ $isEditing }}"
+        :value="$profile->username"
+        :isEditing="$isEditing"
     />
 
     <x-radio-group 
         field="avatar"
-        :isEditing="{{ $isEditing }}"
+        :selection="$profile->avatar"
+        :isEditing="$isEditing"
     />
 
     <x-radio-group 
         field="color"
-        :isEditing="{{ $isEditing }}"
+        :selection="$profile->color"
+        :isEditing="$isEditing"
     />
 
     <x-labeled-input 
         field="bio"
-        :isEditing="{{ $isEditing }}"
+        :value="$profile->bio"
+        :isEditing="$isEditing"
     />
 
     <x-labeled-input 
         field="location"
-        :isEditing="{{ $isEditing }}"
+        :value="$profile->location"
+        :isEditing="$isEditing"
     />
 
     <x-labeled-input 
         field="movie"
-        :isEditing="{{ $isEditing }}"
+        :value="$profile->movie"
+        :isEditing="$isEditing"
     />
 
     <button

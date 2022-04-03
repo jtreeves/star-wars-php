@@ -1,5 +1,6 @@
 @props([
     'field',
+    'value',
     'isEditing',
 ])
 
@@ -15,7 +16,7 @@
         name="{{ $field }}"
         id="{{ $field }}"
         value="{{ 
-            $isEditing ? $profile->$field : '' 
+            $isEditing ? $value : '' 
         }}"
     />
 </article>

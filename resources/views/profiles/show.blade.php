@@ -8,18 +8,22 @@
 
     <x-profile-element 
         field="bio"
+        :value="$profile->bio"
     />
     
     <x-profile-element 
         field="location"
+        :value="$profile->location"
     />
     
     <x-profile-element 
         field="movie"
+        :value="$profile->movie"
     />
     
     <x-profile-element 
         field="color"
+        :value="$profile->color"
     />
 
     <x-mashups-list 

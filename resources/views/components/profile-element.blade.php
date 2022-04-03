@@ -1,5 +1,6 @@
 @props([
     'field',
+    'value'
 ])
 
 <article>
@@ -8,6 +9,6 @@
     </h2>
 
     <p>
-        {{ $profile->$field }}
+        {{ $value }}
     </p>
 </article>
