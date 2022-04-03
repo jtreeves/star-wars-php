@@ -36,6 +36,7 @@ Route::controller(ProfileController::class)->prefix('profiles')->name('profiles.
 
 Route::controller(MashupController::class)->prefix('mashups')->name('mashups.')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/feed', 'feed')->name('feed');
     Route::get('/{id}', 'show')->name('show');
     Route::post('/', 'store')->name('store');
 });
