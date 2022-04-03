@@ -30,16 +30,5 @@
         </p>
     @endif
 
-    <form 
-        action="{{ route('mashups.store') }}"
-        method="POST"
-    >
-        @csrf
-
-        <button
-            type="submit"
-        >
-            Get New Mashup
-        </button>
-    </form>
+    <x-new-mashup />
 @endsection

@@ -7,7 +7,7 @@
         @else
             action="{{ route('mashups.feed') }}"    
         @endif
-        
+
         method="GET"
     >
         @csrf
@@ -36,4 +36,6 @@
         :mashups="$mashups"
         message="No mashups found."
     />
+
+    <x-new-mashup />
 @endsection
