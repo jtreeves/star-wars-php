@@ -32,7 +32,7 @@
         </button>
     </form>
 
-    <x-list 
+    <x-mashups-list 
         :mashups="$mashups"
         message="No mashups found."
     />

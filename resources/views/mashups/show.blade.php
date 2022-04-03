@@ -9,26 +9,10 @@
         :profiles="$mashup->profiles"
     />
 
-    @if (count($mashup->profiles) != 0)
-        <ul>
-            @foreach ($mashup->profiles as $profile)
-                <li>
-                    <a href="{{ route(
-                        'profiles.show',
-                        $profile->id
-                    ) }}">
-                        <p>
-                            {{ $profile->username }}
-                        </p>
-                    </a>
-                </li>
-            @endforeach
-        </ul>
-    @else
-        <p>
-            This mashup has not been favorited by any users.
-        </p>
-    @endif
+    <x-profiles-list 
+        :profiles="$mashup->profiles"
+        message="This mashup has not been favorited by any users."
+    />
 
     <x-new-mashup />
 @endsection

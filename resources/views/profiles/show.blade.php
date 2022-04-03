@@ -46,7 +46,7 @@
         </p>
     </article>
 
-    <x-list 
+    <x-mashups-list 
         :mashups="$profile->mashups"
         message="This user has not liked any mashups."
     />
@@ -56,24 +56,10 @@
             Followers
         </h2>
 
-        @if (count($profile->followers) != 0)
-            <ul>
-                @foreach ($profile->followers as $follower)
-                    <li>
-                        <a href="{{ route(
-                            'profiles.show',
-                            $follower->id
-                        ) }}">
-                            {{ $follower->username }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        @else
-            <p>
-                This user does not have any followers.
-            </p>
-        @endif
+        <x-profiles-list 
+            :profiles="$profile->followers"
+            message="This user does not have any followers."
+        />
     </article>
     
     <article>
@@ -81,24 +67,10 @@
             Following
         </h2>
 
-        @if (count($profile->followings) != 0)
-            <ul>
-                @foreach ($profile->followings as $following)
-                    <li>
-                        <a href="{{ route(
-                            'profiles.show',
-                            $following->id
-                        ) }}">
-                            {{ $following->username }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        @else
-            <p>
-                This user does not follow any other users.
-            </p>
-        @endif
+        <x-profiles-list 
+            :profiles="$profile->followings"
+            message="This user does not follow any other users."
+        />
     </article>
 
     @if (Auth::user()->profile->id == $profile->id)
