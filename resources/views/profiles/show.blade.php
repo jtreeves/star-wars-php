@@ -88,41 +88,9 @@
             </button>
         </form>
     @else
-        @if (!$profile->followers->contains(
-            'id', 
-            Auth::user()->profile->id
-        ))
-            <form 
-                action="{{ route(
-                    'fans.follow', 
-                    $profile->id
-                ) }}"
-                method="GET"
-            >
-                @csrf
-
-                <button
-                    type="submit"
-                >
-                    Follow
-                </button>
-            </form>
-        @else
-            <form 
-                action="{{ route(
-                    'fans.unfollow', 
-                    $profile->id
-                ) }}"
-                method="GET"
-            >
-                @csrf
-
-                <button
-                    type="submit"
-                >
-                    Unfollow
-                </button>
-            </form>
-        @endif
+        <x-follow-buttons 
+            :followers="$profile->followers"
+            :id="$profile->id"
+        />
     @endif
 @endsection
