@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class MashupController extends Controller
 {
@@ -39,6 +40,46 @@ class MashupController extends Controller
             'mashups' => $this->mashups,
             'character' => $character,
             'title' => 'Mashups',
+            'view' => 'index',
+        ]);
+    }
+
+    // Display feed mashups favorited by profiles the current user follows
+    public function feed(Request $request): View
+    {
+        $character = $request->input('character');
+
+        $profileIds = array_unique(DB::table('fans')->where('follower_id', Auth::user()->profile->id)->pluck('following_id')->toArray());
+        $mashupIds = array_unique(DB::table('favorites')->whereIn('profile_id', $profileIds)->pluck('mashup_id')->toArray());
+
+        if ($character) {
+            $this->mashups = Mashup::query()
+                ->whereIn(
+                    'id',
+                    $mashupIds
+                )
+                ->where(
+                    'character', 
+                    'LIKE', 
+                    "%{$character}%"
+                )
+                ->get()
+                ->sortByDesc('created_at');
+        } else {
+            $this->mashups = Mashup::query()
+                ->whereIn(
+                    'id',
+                    $mashupIds
+                )
+                ->get()
+                ->sortByDesc('created_at');
+        }
+
+        return view('mashups.index', [
+            'mashups' => $this->mashups,
+            'character' => $character,
+            'title' => 'Mashups Feed',
+            'view' => 'feed',
         ]);
     }
 
