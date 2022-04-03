@@ -6,45 +6,21 @@
         alt="{{ $profile->avatar }}"
     />
 
-    <article>
-        <h2>
-            Bio
-        </h2>
+    <x-profile-element 
+        field="bio"
+    />
     
-        <p>
-            {{ $profile->bio }}
-        </p>
-    </article>
+    <x-profile-element 
+        field="location"
+    />
     
-    <article>
-        <h2>
-            Location
-        </h2>
+    <x-profile-element 
+        field="movie"
+    />
     
-        <p>
-            {{ $profile->location }}
-        </p>
-    </article>
-    
-    <article>
-        <h2>
-            Favorite Movie
-        </h2>
-    
-        <p>
-            {{ $profile->movie }}
-        </p>
-    </article>
-    
-    <article>
-        <h2>
-            Color
-        </h2>
-    
-        <p>
-            {{ $profile->color }}
-        </p>
-    </article>
+    <x-profile-element 
+        field="color"
+    />
 
     <x-mashups-list 
         :mashups="$profile->mashups"
