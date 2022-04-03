@@ -1,7 +1,7 @@
 @extends('layouts.main', ['title' => $title])
 
 @section('content')
-    <x-profile-form 
+    <x-form.alter-profile
         isEditing="{{ true }}"
         :profile="$profile"
     />

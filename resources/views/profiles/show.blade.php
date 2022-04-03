@@ -6,42 +6,42 @@
         alt="{{ $profile->avatar }}"
     />
 
-    <x-profile-element 
+    <x-element.profile-field 
         field="bio"
         :value="$profile->bio"
     />
     
-    <x-profile-element 
+    <x-element.profile-field 
         field="location"
         :value="$profile->location"
     />
     
-    <x-profile-element 
+    <x-element.profile-field 
         field="movie"
         :value="$profile->movie"
     />
     
-    <x-profile-element 
+    <x-element.profile-field 
         field="color"
         :value="$profile->color"
     />
 
-    <x-mashups-list 
+    <x-list.mashups
         :mashups="$profile->mashups"
         message="This user has not liked any mashups."
     />
 
-    <x-fans 
+    <x-list.fans 
         :followers="$profile->followers"
         :followings="$profile->followings"
     />
 
     @if (Auth::user()->profile->id == $profile->id)
-        <x-executive-buttons 
+        <x-button.executives 
             :id="$profile->id"
         />
     @else
-        <x-follow-buttons 
+        <x-button.follow-profiles 
             :followers="$profile->followers"
             :id="$profile->id"
         />

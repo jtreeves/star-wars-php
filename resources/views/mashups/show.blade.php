@@ -1,7 +1,7 @@
 @extends('layouts.main', ['title' => $title])
 
 @section('content')
-    <x-card  
+    <x-element.mashup-card  
         :id="$mashup->id"
         :quote="$mashup->quote"
         :character="$mashup->character"
@@ -9,10 +9,10 @@
         :profiles="$mashup->profiles"
     />
 
-    <x-profiles-list 
+    <x-list.profiles 
         :profiles="$mashup->profiles"
         message="This mashup has not been favorited by any users."
     />
 
-    <x-new-mashup />
+    <x-button.new-mashup />
 @endsection

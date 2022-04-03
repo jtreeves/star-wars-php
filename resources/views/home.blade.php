@@ -39,6 +39,6 @@
             </button>
         </form>
     @else
-        <x-new-mashup />
+        <x-button.new-mashup />
     @endif
 @endsection

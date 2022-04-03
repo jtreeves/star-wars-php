@@ -7,7 +7,7 @@
     <ul>
         @foreach ($mashups as $mashup)
             <li>
-                <x-card  
+                <x-element.mashup-card  
                     :id="$mashup->id"
                     :quote="$mashup->quote"
                     :character="$mashup->character"

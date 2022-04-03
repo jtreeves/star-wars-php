@@ -1,15 +1,15 @@
 @extends('layouts.main', ['title' => $title])
 
 @section('content')
-    <x-search-mashups 
+    <x-form.search-mashups 
         :view="$view"
         :character="$character"
     />
 
-    <x-mashups-list 
+    <x-list.mashups
         :mashups="$mashups"
         message="No mashups found."
     />
 
-    <x-new-mashup />
+    <x-button.new-mashup />
 @endsection

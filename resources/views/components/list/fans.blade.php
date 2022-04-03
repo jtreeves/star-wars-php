@@ -9,7 +9,7 @@
             Followers
         </h2>
 
-        <x-profiles-list 
+        <x-list.profiles
             :profiles="$followers"
             message="This user does not have any followers."
         />
@@ -20,7 +20,7 @@
             Following
         </h2>
 
-        <x-profiles-list 
+        <x-list.profiles 
             :profiles="$followings"
             message="This user does not follow any other users."
         />
