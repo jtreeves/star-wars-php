@@ -57,36 +57,9 @@
     />
 
     @if (Auth::user()->profile->id == $profile->id)
-        <form 
-            action="{{ route(
-                'profiles.edit', 
-                $profile->id
-            ) }}"
-            method="GET"
-        >
-            <button
-                type="submit"
-            >
-                Edit
-            </button>
-        </form>
-
-        <form 
-            action="{{ route(
-                'profiles.destroy', 
-                $profile->id
-            ) }}"
-            method="POST"
-        >
-            @csrf
-            @method('DELETE')
-
-            <button
-                type="submit"
-            >
-                Delete
-            </button>
-        </form>
+        <x-executive-buttons 
+            :id="$profile->id"
+        />
     @else
         <x-follow-buttons 
             :followers="$profile->followers"
