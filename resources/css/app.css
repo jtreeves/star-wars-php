@@ -3,8 +3,8 @@
 @import 'tailwindcss/utilities';
 
 @font-face {
-    font-family: 'StarJedi';
-    src: url('/fonts/StarJedi.ttf');
+    font-family: 'StarWars';
+    src: url('/fonts/StarWars.ttf');
 }
 
 @font-face {

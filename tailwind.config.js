@@ -11,6 +11,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                'star': ['StarWars'],
+                'cycle': ['NewsCycle'],
             },
         },
     },

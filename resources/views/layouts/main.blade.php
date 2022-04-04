@@ -42,7 +42,7 @@
     </head>
 
     <body 
-        class="font-sans antialiased min-h-screen bg-gray-100"
+        class="font-cycle antialiased min-h-screen bg-gray-100 grid grid-cols-1 grid-rows-[100px_auto_100px] justify-items-center"
     >
         @include('partials.header')
 
