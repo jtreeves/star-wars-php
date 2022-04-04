@@ -18,7 +18,7 @@ class ProfileController extends Controller
 
         return view('profiles.show', [
             'profile' => $profile,
-            'title' => $profile->username,
+            'title' => "@{$profile->username}",
         ]);
     }
     
