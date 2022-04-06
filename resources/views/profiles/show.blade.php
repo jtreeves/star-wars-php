@@ -1,9 +1,9 @@
 @extends('layouts.main', ['title' => $title])
 
 @section('content')
-    <img 
-        src="{{ config('constants.avatars')[$profile->avatar] }}" 
-        alt="{{ $profile->avatar }}"
+    <x-element.avatar 
+        :avatar="$profile->avatar"
+        :color="$profile->color"
     />
 
     <x-element.profile-field 

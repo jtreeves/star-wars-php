@@ -8,7 +8,7 @@
     $isAvatar = $field == 'avatar';
     $avatars = config('constants.avatars');
     $colors = config('constants.colors');
-    $constants = $isAvatar ? $avatars : $colors;
+    $constants = $isAvatar ? array_keys($avatars) : $colors;
 @endphp
 
 <article>
@@ -18,7 +18,7 @@
         {{ $field }}
     </label>
 
-    @foreach ($constants as $key => $value)
+    @foreach ($constants as $key)
         @if (
             $isEditing && 
             $key == $selection
@@ -33,15 +33,10 @@
     
             <label 
                 for="{{ $key }}"
-
-                @if (!$isAvatar)
-                    style="background-color: {{ $value }};"
-                @endif
             >
                 @if ($isAvatar)
-                    <img 
-                        src="{{ $value }}" 
-                        alt="{{ $key }}"
+                    <x-element.avatar 
+                        :avatar="$key"
                     />
                 @else
                     {{ $key }}
@@ -57,15 +52,10 @@
     
             <label 
                 for="{{ $key }}"
-
-                @if (!$isAvatar)
-                    style="background-color: {{ $value }};"
-                @endif
             >
                 @if ($isAvatar)
-                    <img 
-                        src="{{ $value }}" 
-                        alt="{{ $key }}"
+                    <x-element.avatar 
+                        :avatar="$key"
                     />
                 @else
                     {{ $key }}
