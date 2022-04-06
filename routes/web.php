@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MashupController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\FanController;
+use App\Http\Controllers\ModeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,11 @@ Route::controller(FavoriteController::class)->prefix('favorites')->name('favorit
 Route::controller(FanController::class)->prefix('fans')->name('fans.')->group(function () {
     Route::get('/follow/{profileId}', 'follow')->name('follow');
     Route::get('/unfollow/{profileId}', 'unfollow')->name('unfollow');
+});
+
+Route::controller(ModeController::class)->prefix('mode')->name('mode.')->group(function () {
+    Route::get('/light', 'light')->name('light');
+    Route::get('/dark', 'dark')->name('dark');
 });
 
 require __DIR__.'/auth.php';
