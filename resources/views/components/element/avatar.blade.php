@@ -1,6 +1,7 @@
 @props([
     'avatar',
-    'color' => ''
+    'color' => '',
+    'size' => '',
 ])
 
 @php
@@ -39,10 +40,29 @@
             $borderColor = 'border-black';
             break;
     }
+
+    switch ($size) {
+        case 'small':
+            $dimensions = 'w-4 h-4';
+            $borderWidth = 'border-2';
+            break;
+        case 'medium':
+            $dimensions = 'w-16 h-16';
+            $borderWidth = 'border-4';
+            break;
+        case 'large':
+            $dimensions = 'w-32 h-32';
+            $borderWidth = 'border-8';
+            break;
+        default:
+            $dimensions = 'w-16 h-16';
+            $borderWidth = 'border-4';
+            break;
+    }
 @endphp
 
 <img 
     src="{{ config('constants.avatars')[$avatar] }}" 
     alt="{{ $avatar }}"
-    class="w-32 h-32 object-cover rounded-full border-8 border-solid {{ $borderColor }}"
+    class="object-cover rounded-full border-solid {{ $borderColor }} {{ $dimensions }} {{ $borderWidth }}"
 />
