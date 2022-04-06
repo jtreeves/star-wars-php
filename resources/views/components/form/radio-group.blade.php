@@ -37,6 +37,7 @@
                 @if ($isAvatar)
                     <x-element.avatar 
                         :avatar="$key"
+                        size="medium"
                     />
                 @else
                     {{ $key }}
@@ -56,6 +57,7 @@
                 @if ($isAvatar)
                     <x-element.avatar 
                         :avatar="$key"
+                        size="medium"
                     />
                 @else
                     {{ $key }}

@@ -4,6 +4,7 @@
     <x-element.avatar 
         :avatar="$profile->avatar"
         :color="$profile->color"
+        size="large"
     />
 
     <x-element.profile-field 
@@ -19,11 +20,6 @@
     <x-element.profile-field 
         field="movie"
         :value="$profile->movie"
-    />
-    
-    <x-element.profile-field 
-        field="color"
-        :value="$profile->color"
     />
 
     <x-list.mashups
