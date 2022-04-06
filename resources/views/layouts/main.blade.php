@@ -89,8 +89,12 @@
     >
         @include('partials.header')
 
-        <main class="flex flex-col gap-3 p-5 w-full items-center">
-            <h1 class="uppercase text-3xl font-black">
+        <main 
+            class="flex flex-col gap-3 p-5 w-full items-center"
+        >
+            <h1 
+                class="uppercase text-3xl font-black"
+            >
                 {{ $title }}
             </h1>
     
