@@ -6,34 +6,34 @@
 @php
     switch ($color) {
         case 'red':
-            $borderColor = 'border-red-700';
+            $borderColor = 'border-red-700 dark:border-red-300';
             break;
         case 'orange':
-            $borderColor = 'border-orange-700';
+            $borderColor = 'border-orange-700 dark:border-orange-300';
             break;
         case 'yellow':
-            $borderColor = 'border-yellow-700';
+            $borderColor = 'border-yellow-700 dark:border-yellow-300';
             break;
         case 'green':
-            $borderColor = 'border-green-700';
+            $borderColor = 'border-green-700 dark:border-green-300';
             break;
         case 'blue':
-            $borderColor = 'border-blue-700';
+            $borderColor = 'border-blue-700 dark:border-blue-300';
             break;
         case 'purple':
-            $borderColor = 'border-purple-700';
+            $borderColor = 'border-purple-700 dark:border-purple-300';
             break;
         case 'pink':
-            $borderColor = 'border-pink-700';
+            $borderColor = 'border-pink-700 dark:border-pink-300';
             break;
         case 'amber':
-            $borderColor = 'border-amber-700';
+            $borderColor = 'border-amber-700 dark:border-amber-300';
             break;
         case 'teal':
-            $borderColor = 'border-teal-700';
+            $borderColor = 'border-teal-700 dark:border-teal-300';
             break;
         case 'zinc':
-            $borderColor = 'border-zinc-700';
+            $borderColor = 'border-zinc-700 dark:border-zinc-300';
             break;
         default:
             $borderColor = 'border-black';
