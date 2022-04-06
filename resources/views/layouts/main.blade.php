@@ -44,41 +44,41 @@
 
     @php
         if (!Auth::check()) {
-            $backgroundColor = 'bg-gray-100 dark:bg-gray-700';
+            $backgroundColor = 'bg-gray-100 dark:bg-gray-900';
         } else {
             switch (Auth::user()->profile->color) {
                 case 'red':
-                    $backgroundColor = 'bg-red-300 dark:bg-red-700';
+                    $backgroundColor = 'bg-red-200 dark:bg-red-800';
                     break;
                 case 'orange':
-                    $backgroundColor = 'bg-orange-300 dark:bg-orange-700';
+                    $backgroundColor = 'bg-orange-200 dark:bg-orange-800';
                     break;
                 case 'yellow':
-                    $backgroundColor = 'bg-yellow-300 dark:bg-yellow-700';
+                    $backgroundColor = 'bg-yellow-200 dark:bg-yellow-800';
                     break;
                 case 'green':
-                    $backgroundColor = 'bg-green-300 dark:bg-green-700';
+                    $backgroundColor = 'bg-green-200 dark:bg-green-800';
                     break;
                 case 'blue':
-                    $backgroundColor = 'bg-blue-300 dark:bg-blue-700';
+                    $backgroundColor = 'bg-blue-200 dark:bg-blue-800';
                     break;
                 case 'purple':
-                    $backgroundColor = 'bg-purple-300 dark:bg-purple-700';
+                    $backgroundColor = 'bg-purple-200 dark:bg-purple-800';
                     break;
                 case 'pink':
-                    $backgroundColor = 'bg-pink-300 dark:bg-pink-700';
+                    $backgroundColor = 'bg-pink-200 dark:bg-pink-800';
                     break;
                 case 'amber':
-                    $backgroundColor = 'bg-amber-300 dark:bg-amber-700';
+                    $backgroundColor = 'bg-amber-200 dark:bg-amber-800';
                     break;
                 case 'teal':
-                    $backgroundColor = 'bg-teal-300 dark:bg-teal-700';
+                    $backgroundColor = 'bg-teal-200 dark:bg-teal-800';
                     break;
                 case 'zinc':
-                    $backgroundColor = 'bg-zinc-300 dark:bg-zinc-700';
+                    $backgroundColor = 'bg-zinc-200 dark:bg-zinc-800';
                     break;
                 default:
-                    $backgroundColor = 'bg-gray-100 dark:bg-gray-700';
+                    $backgroundColor = 'bg-gray-100 dark:bg-gray-900';
                     break;
             }
         }
