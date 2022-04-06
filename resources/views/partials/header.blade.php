@@ -6,5 +6,9 @@
         Star Wars Mashups
     </a>
 
-    @include('partials.navigation')
+    <div class="flex flex-row gap-10">
+        @include('partials.navigation')
+
+        @include('partials.toggle')
+    </div>
 </header>
