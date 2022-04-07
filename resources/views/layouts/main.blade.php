@@ -48,34 +48,34 @@
         } else {
             switch (Auth::user()->profile->color) {
                 case 'red':
-                    $backgroundColor = 'bg-red-200 dark:bg-red-800';
+                    $backgroundColor = 'bg-red-100 dark:bg-red-900';
                     break;
                 case 'orange':
-                    $backgroundColor = 'bg-orange-200 dark:bg-orange-800';
+                    $backgroundColor = 'bg-orange-100 dark:bg-orange-900';
                     break;
                 case 'yellow':
-                    $backgroundColor = 'bg-yellow-200 dark:bg-yellow-800';
+                    $backgroundColor = 'bg-yellow-100 dark:bg-yellow-900';
                     break;
                 case 'green':
-                    $backgroundColor = 'bg-green-200 dark:bg-green-800';
+                    $backgroundColor = 'bg-green-100 dark:bg-green-900';
                     break;
                 case 'blue':
-                    $backgroundColor = 'bg-blue-200 dark:bg-blue-800';
+                    $backgroundColor = 'bg-blue-100 dark:bg-blue-900';
                     break;
                 case 'purple':
-                    $backgroundColor = 'bg-purple-200 dark:bg-purple-800';
+                    $backgroundColor = 'bg-purple-100 dark:bg-purple-900';
                     break;
                 case 'pink':
-                    $backgroundColor = 'bg-pink-200 dark:bg-pink-800';
+                    $backgroundColor = 'bg-pink-100 dark:bg-pink-900';
                     break;
                 case 'amber':
-                    $backgroundColor = 'bg-amber-200 dark:bg-amber-800';
+                    $backgroundColor = 'bg-amber-100 dark:bg-amber-900';
                     break;
                 case 'teal':
-                    $backgroundColor = 'bg-teal-200 dark:bg-teal-800';
+                    $backgroundColor = 'bg-teal-100 dark:bg-teal-900';
                     break;
                 case 'zinc':
-                    $backgroundColor = 'bg-zinc-200 dark:bg-zinc-800';
+                    $backgroundColor = 'bg-zinc-100 dark:bg-zinc-900';
                     break;
                 default:
                     $backgroundColor = 'bg-gray-100 dark:bg-gray-900';
@@ -90,7 +90,7 @@
         @include('partials.header')
 
         <main 
-            class="flex flex-col gap-3 p-5 w-full items-center"
+            class="flex flex-col gap-3 p-5 w-full items-center text-slate-800 dark:text-slate-400"
         >
             <h1 
                 class="uppercase text-3xl font-black"
