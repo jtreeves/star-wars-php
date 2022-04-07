@@ -4,9 +4,7 @@
 >
     @csrf
 
-    <button
-        type="submit"
-    >
+    <x-button>
         Get New Mashup
-    </button>
+    </x-button>
 </form>

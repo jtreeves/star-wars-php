@@ -16,11 +16,9 @@
     >
         @csrf
 
-        <button
-            type="submit"
-        >
+        <x-button>
             Follow
-        </button>
+        </x-button>
     </form>
 @else
     <form 
@@ -32,10 +30,8 @@
     >
         @csrf
 
-        <button
-            type="submit"
-        >
+        <x-button>
             Unfollow
-        </button>
+        </x-button>
     </form>
 @endif

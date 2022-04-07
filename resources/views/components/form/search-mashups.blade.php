@@ -27,9 +27,7 @@
         value="{{ $character }}"
     />
 
-    <button
-        type="submit"
-    >
+    <x-button>
         Search
-    </button>
+    </x-button>
 </form>

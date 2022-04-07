@@ -10,11 +10,9 @@
         ) }}"
         method="GET"
     >
-        <button
-            type="submit"
-        >
+        <x-button>
             Edit
-        </button>
+        </x-button>
     </form>
 
     <form 
@@ -27,10 +25,8 @@
         @csrf
         @method('DELETE')
 
-        <button
-            type="submit"
-        >
+        <x-button>
             Delete
-        </button>
+        </x-button>
     </form>
 </section>

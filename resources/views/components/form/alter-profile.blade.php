@@ -57,9 +57,7 @@
         :isEditing="$isEditing"
     />
 
-    <button
-        type="submit"
-    >
+    <x-button>
         {{ $isEditing ? 'Update' : 'Save' }} Your Profile
-    </button>
+    </x-button>
 </form>
