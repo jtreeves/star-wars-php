@@ -7,8 +7,8 @@
     'view' => '',
 ])
 
-<article class="w-[600px] pt-[100px] pb-[100px] rounded overflow-hidden shadow-lg relative flex justify-center items-center bg-slate-800">
-    <div class="bg-slate-100 w-[400px]">
+<article class="w-[600px] pt-[25px] pb-[25px] rounded overflow-hidden shadow-lg relative flex justify-center items-center bg-slate-800">
+    <div class="bg-slate-100 w-[550px]">
         <div class="flex flex-col gap-1 px-6 py-4">
             <blockquote class="place-self-start italic">
                 {{ $quote }}
@@ -77,7 +77,7 @@
                 'mashups.show',
                 $id
             ) }}"
-            class="absolute bottom-0 right-0 text-white"
+            class="absolute bottom-0 right-0"
         >
             <x-element.ellipsis />
         </a>
