@@ -13,14 +13,8 @@
                     :character="$mashup->character"
                     :image="$mashup->image"
                     :profiles="$mashup->profiles"
+                    view="list"
                 />
-
-                <a href="{{ route(
-                    'mashups.show',
-                    $mashup->id
-                ) }}">
-                    View More Details
-                </a>
             </li>
         @endforeach
     </ul>

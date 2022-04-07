@@ -4,22 +4,26 @@
     'character',
     'image',
     'profiles',
+    'view' => '',
 ])
 
-<article>
-    <blockquote>
-        {{ $quote }}
-    </blockquote>
-
-    <span>
-        — {{ $character }}
-    </span>
+<article class="max-w-sm rounded overflow-hidden shadow-lg">
+    <div class="flex flex-col gap-1 px-6 py-4">
+        <blockquote class="place-self-start italic">
+            {{ $quote }}
+        </blockquote>
+    
+        <span class="place-self-end">
+            — {{ $character }}
+        </span>
+    </div>
 
     <img 
         src="{{ $image }}"
         alt="Star Wars {{ 
             $character 
         }}"
+        class="w-full"
     />
 
     @if (!$profiles->contains(
@@ -38,7 +42,9 @@
             <button
                 type="submit"
             >
-                Favorite
+                <x-element.star 
+                    isStarred="{{ false }}"
+                />
             </button>
         </form>
     @else
@@ -54,8 +60,19 @@
             <button
                 type="submit"
             >
-                Unfavorite
+                <x-element.star 
+                    isStarred="{{ true }}"
+                />
             </button>
         </form>
+    @endif
+
+    @if ($view == 'list')
+        <a href="{{ route(
+            'mashups.show',
+            $id
+        ) }}">
+            View More Details
+        </a>
     @endif
 </article>
