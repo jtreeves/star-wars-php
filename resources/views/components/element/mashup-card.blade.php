@@ -7,24 +7,26 @@
     'view' => '',
 ])
 
-<article class="max-w-sm rounded overflow-hidden shadow-lg">
-    <div class="flex flex-col gap-1 px-6 py-4">
-        <blockquote class="place-self-start italic">
-            {{ $quote }}
-        </blockquote>
+<article class="w-[600px] pt-[100px] pb-[100px] rounded overflow-hidden shadow-lg relative flex justify-center items-center bg-slate-800">
+    <div class="bg-slate-100 w-[400px]">
+        <div class="flex flex-col gap-1 px-6 py-4">
+            <blockquote class="place-self-start italic">
+                {{ $quote }}
+            </blockquote>
+        
+            <span class="place-self-end">
+                — {{ $character }}
+            </span>
+        </div>
     
-        <span class="place-self-end">
-            — {{ $character }}
-        </span>
+        <img 
+            src="{{ $image }}"
+            alt="Star Wars {{ 
+                $character 
+            }}"
+            class="w-full"
+        />
     </div>
-
-    <img 
-        src="{{ $image }}"
-        alt="Star Wars {{ 
-            $character 
-        }}"
-        class="w-full"
-    />
 
     @if (!$profiles->contains(
         'id', 
@@ -36,6 +38,7 @@
                 $id
             ) }}"
             method="GET"
+            class="absolute top-0 left-0"
         >
             @csrf
 
@@ -54,6 +57,7 @@
                 $id
             ) }}"
             method="GET"
+            class="absolute top-0 left-0"
         >
             @csrf
 
@@ -68,11 +72,14 @@
     @endif
 
     @if ($view == 'list')
-        <a href="{{ route(
-            'mashups.show',
-            $id
-        ) }}">
-            View More Details
+        <a 
+            href="{{ route(
+                'mashups.show',
+                $id
+            ) }}"
+            class="absolute bottom-0 right-0 text-white"
+        >
+            <x-element.ellipsis />
         </a>
     @endif
 </article>
