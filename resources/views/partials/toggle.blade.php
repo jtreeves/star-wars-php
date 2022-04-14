@@ -6,7 +6,7 @@
     $darkClass = !$isLight ? $active : $inactive;
 @endphp
 
-<article>
+<article class="flex justify-center gap-3">
     <form 
         action="{{ route('mode.light') }}"
         method="GET"
@@ -15,10 +15,8 @@
 
         <button
             type="submit"
-            class="{{ $lightClass }}"
-        >
-            Light
-        </button>
+            class="{{ $lightClass }} rounded-full w-6 h-6"
+        ></button>
     </form>
     
     <form 
@@ -29,9 +27,7 @@
 
         <button
             type="submit"
-            class="{{ $darkClass }}"
-        >
-            Dark
-        </button>
+            class="{{ $darkClass }} rounded-full w-6 h-6"
+        ></button>
     </form>
 </article>

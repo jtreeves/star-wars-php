@@ -737,8 +737,8 @@ select {
 .w-\[600px\] {
   width: 600px;
 }
-.w-\[500px\] {
-  width: 500px;
+.w-\[550px\] {
+  width: 550px;
 }
 .w-full {
   width: 100%;
@@ -757,9 +757,6 @@ select {
 }
 .w-8 {
   width: 2rem;
-}
-.w-\[550px\] {
-  width: 550px;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -845,6 +842,9 @@ select {
 }
 .gap-3 {
   gap: 0.75rem;
+}
+.gap-5 {
+  gap: 1.25rem;
 }
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -1161,11 +1161,11 @@ select {
 .pb-1 {
   padding-bottom: 0.25rem;
 }
-.pt-\[50px\] {
-  padding-top: 50px;
+.pt-\[25px\] {
+  padding-top: 25px;
 }
-.pb-\[50px\] {
-  padding-bottom: 50px;
+.pb-\[25px\] {
+  padding-bottom: 25px;
 }
 .pt-6 {
   padding-top: 1.5rem;
@@ -1181,12 +1181,6 @@ select {
 }
 .pt-8 {
   padding-top: 2rem;
-}
-.pt-\[25px\] {
-  padding-top: 25px;
-}
-.pb-\[25px\] {
-  padding-bottom: 25px;
 }
 .text-center {
   text-align: center;
