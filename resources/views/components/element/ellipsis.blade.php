@@ -1,7 +1,7 @@
 <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="0 0 41.915 41.915"
-    class="h-[41.915px] text-white fill-current"
+    class="h-[41.915px] text-slate-100 opacity-50 hover:opacity-100 fill-current"
     stroke="currentColor"
 >
     <path 
