@@ -42,58 +42,16 @@
         ></script>
     </head>
 
-    @php
-        if (!Auth::check()) {
-            $backgroundColor = 'bg-gray-100 dark:bg-gray-900';
-        } else {
-            switch (Auth::user()->profile->color) {
-                case 'red':
-                    $backgroundColor = 'bg-red-100 dark:bg-red-900';
-                    break;
-                case 'orange':
-                    $backgroundColor = 'bg-orange-100 dark:bg-orange-900';
-                    break;
-                case 'yellow':
-                    $backgroundColor = 'bg-yellow-100 dark:bg-yellow-900';
-                    break;
-                case 'green':
-                    $backgroundColor = 'bg-green-100 dark:bg-green-900';
-                    break;
-                case 'blue':
-                    $backgroundColor = 'bg-blue-100 dark:bg-blue-900';
-                    break;
-                case 'purple':
-                    $backgroundColor = 'bg-purple-100 dark:bg-purple-900';
-                    break;
-                case 'pink':
-                    $backgroundColor = 'bg-pink-100 dark:bg-pink-900';
-                    break;
-                case 'amber':
-                    $backgroundColor = 'bg-amber-100 dark:bg-amber-900';
-                    break;
-                case 'teal':
-                    $backgroundColor = 'bg-teal-100 dark:bg-teal-900';
-                    break;
-                case 'zinc':
-                    $backgroundColor = 'bg-zinc-100 dark:bg-zinc-900';
-                    break;
-                default:
-                    $backgroundColor = 'bg-gray-100 dark:bg-gray-900';
-                    break;
-            }
-        }
-    @endphp
-
     <body 
-        class="font-cycle antialiased min-h-screen grid grid-cols-1 grid-rows-[100px_auto_100px] justify-items-center {{ $backgroundColor }}"
+        class="font-cycle antialiased min-h-screen grid grid-cols-1 grid-rows-[100px_auto_100px] justify-items-center bg-slate-100 dark:bg-slate-900"
     >
         @include('partials.header')
 
         <main 
-            class="flex flex-col gap-3 p-5 w-full items-center text-slate-800 dark:text-slate-400"
+            class="flex flex-col gap-3 p-5 w-full items-center text-slate-700 dark:text-slate-300"
         >
             <h1 
-                class="uppercase text-3xl font-black"
+                class="uppercase text-3xl font-black text-slate-900 dark:text-slate-100"
             >
                 {{ $title }}
             </h1>
