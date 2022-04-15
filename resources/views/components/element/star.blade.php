@@ -8,7 +8,7 @@
 
 <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="w-6 h-6 text-yellow-300 {{ $fill }}"
+    class="w-4 h-4 text-slate-100 opacity-50 hover:opacity-100 {{ $fill }}"
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
