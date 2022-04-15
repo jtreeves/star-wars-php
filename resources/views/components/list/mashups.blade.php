@@ -4,7 +4,7 @@
 ])
 
 @if (count($mashups) != 0)
-    <ul>
+    <ul class="flex flex-col gap-10">
         @foreach ($mashups as $mashup)
             <li>
                 <x-element.mashup-card  
