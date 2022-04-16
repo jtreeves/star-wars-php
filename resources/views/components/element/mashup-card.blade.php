@@ -7,7 +7,10 @@
     'view' => '',
 ])
 
-<article class="max-w-lg rounded overflow-hidden shadow-lg shadow-slate-900 dark:shadow-slate-100 flex flex-col">
+<article 
+    class="max-w-lg rounded overflow-hidden shadow-lg shadow-slate-900 dark:shadow-slate-100 flex flex-col"
+    id="mashup-{{ $id }}"
+>
     <div class="flex flex-col gap-1 px-6 py-4 bg-slate-900 dark:bg-slate-100 text-slate-100 dark:text-slate-900">
         <blockquote class="place-self-start">
             {{ $quote }}
@@ -60,7 +63,7 @@
                     class="ml-1 h-6 flex flex-col justify-center"
                 >
                     @csrf
-        
+
                     <button
                         type="submit"
                     >
