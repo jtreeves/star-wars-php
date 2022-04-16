@@ -52,7 +52,7 @@
     }
 @endphp
 
-<header class="flex flex-row justify-between items-center p-6 w-full border-b {{ $border }}">
+<header class="flex flex-row sticky top-0 z-10 bg-slate-100 dark:bg-slate-900 justify-between items-center p-6 w-full border-b {{ $border }}">
     <a 
         href="{{ route('home') }}" 
         class="font-star text-3xl mb-2 {{ $colors }}"
