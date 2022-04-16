@@ -17,22 +17,26 @@ class FavoriteController extends Controller
     // Dispatch event to star mashup
     public function star(Request $request): RedirectResponse
     {
+        $previousUrl = request()->headers->get('referer');
         $id = $request->route('mashupId');
+        $updatedUrl = "{$previousUrl}#mashup-{$id}";
         $this->mashup = Mashup::find($id);
 
         Event::dispatch(new StarMashup($this->mashup));
 
-        return back();
+        return redirect($updatedUrl);
     }
     
     // Dispatch event to unstar mashup
     public function unstar(Request $request): RedirectResponse
     {
+        $previousUrl = request()->headers->get('referer');
         $id = $request->route('mashupId');
+        $updatedUrl = "{$previousUrl}#mashup-{$id}";
         $this->mashup = Mashup::find($id);
 
         Event::dispatch(new UnstarMashup($this->mashup));
 
-        return back();
+        return redirect($updatedUrl);
     }
 }
