@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('following_id')
                 ->references('id')
                 ->on('profiles');
+            $table->unique(['follower_id', 'following_id']);
         });
     }
 

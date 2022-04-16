@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('profile_id')
                 ->references('id')
                 ->on('profiles');
+            $table->unique(['mashup_id', 'profile_id']);
         });
     }
 
