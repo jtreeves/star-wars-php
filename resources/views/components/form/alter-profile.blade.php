@@ -23,37 +23,37 @@
 
     <x-form.labeled-input 
         field="username"
-        :value="$profile->username"
+        :value="$isEditing ? $profile->username : ''"
         :isEditing="$isEditing"
     />
 
     <x-form.radio-group 
         field="avatar"
-        :selection="$profile->avatar"
+        :selection="$isEditing ? $profile->avatar : ''"
         :isEditing="$isEditing"
     />
 
     <x-form.radio-group 
         field="color"
-        :selection="$profile->color"
+        :selection="$isEditing ? $profile->color : ''"
         :isEditing="$isEditing"
     />
 
     <x-form.labeled-input 
         field="bio"
-        :value="$profile->bio"
+        :value="$isEditing ? $profile->bio : ''"
         :isEditing="$isEditing"
     />
 
     <x-form.labeled-input 
         field="location"
-        :value="$profile->location"
+        :value="$isEditing ? $profile->location : ''"
         :isEditing="$isEditing"
     />
 
     <x-form.labeled-input 
         field="movie"
-        :value="$profile->movie"
+        :value="$isEditing ? $profile->movie : ''"
         :isEditing="$isEditing"
     />
 
