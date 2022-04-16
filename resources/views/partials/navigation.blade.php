@@ -3,7 +3,7 @@
         <li>
             <a 
                 href="{{ route('home') }}"
-                class="text-yellow-700 hover:text-yellow-500"
+                class="{{ $colors }}"
             >
                 Home
             </a>
@@ -12,7 +12,7 @@
         <li>
             <a 
                 href="{{ route('about') }}"
-                class="text-yellow-700 hover:text-yellow-500"
+                class="{{ $colors }}"
             >
                 About
             </a>
@@ -28,7 +28,7 @@
                         'profiles.show', 
                         Auth::user()->profile->id
                     ) }}"
-                    class="text-yellow-700 hover:text-yellow-500"
+                    class="{{ $colors }}"
                 >
                     Profile
                 </a>
@@ -37,7 +37,7 @@
             <li>
                 <a 
                     href="{{ route('mashups.index') }}"
-                    class="text-yellow-700 hover:text-yellow-500"
+                    class="{{ $colors }}"
                 >
                     Mashups
                 </a>
@@ -46,7 +46,7 @@
             <li>
                 <a 
                     href="{{ route('mashups.feed') }}"
-                    class="text-yellow-700 hover:text-yellow-500"
+                    class="{{ $colors }}"
                 >
                     Feed
                 </a>
