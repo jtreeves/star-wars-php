@@ -93,12 +93,16 @@ class MashupController extends Controller
         $quote = $package['quote'];
         $character = $package['character'];
         $image = $imageMaker->getImage($character);
-        
-        $mashup = Mashup::create([
-            'quote' => $quote,
-            'character' => $character,
-            'image' => $image,
-        ]);
+
+        if (!Mashup::where('quote', $quote)->where('image', $image)->first()) {
+            $mashup = Mashup::create([
+                'quote' => $quote,
+                'character' => $character,
+                'image' => $image,
+            ]);
+        } else {
+            $this->store();
+        }
 
         return redirect()->route(
             'mashups.show', 
