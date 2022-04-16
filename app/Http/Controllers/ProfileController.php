@@ -68,7 +68,7 @@ class ProfileController extends Controller
     }
 
     // Store a new profile
-    public function store(Request $request): View
+    public function store(Request $request): RedirectResponse
     {
         $profile = Profile::create([
             'user_id' => Auth::user()->id,
@@ -80,10 +80,10 @@ class ProfileController extends Controller
             'movie' => $request->get('movie'),
         ]);
 
-        return view('profiles.show', [
-            'profile' => $profile,
-            'title' => $request->input('username'),
-        ]);
+        return redirect()->route(
+            'profiles.show', 
+            $profile->id
+        );
     }
 
     // Show form to create a new profile
