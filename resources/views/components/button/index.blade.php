@@ -1,5 +1,5 @@
 @php
-    if (!Auth::check()) {
+    if (!Auth::check() || Auth::user()->profile()->count() == 0) {
         $colors = 'bg-gray-800 dark:bg-gray-200 hover:bg-gray-700 dark:hover:bg-gray-300 active:bg-gray-900 dark:active:bg-gray-100 focus:border-gray-900 dark:focus:border-gray-100 ring-gray-300 dark:ring-gray-700';
     } else {
         switch (Auth::user()->profile->color) {
