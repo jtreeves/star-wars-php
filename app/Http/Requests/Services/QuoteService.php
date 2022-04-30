@@ -13,7 +13,7 @@ class QuoteService
     private array $quoteArray;
 
     // Set text to value returned from API call
-    public function setFullText(): void
+    private function setFullText(): void
     {
         $url = 'http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote';
         $response = Http::withoutVerifying()->get($url);
@@ -24,11 +24,14 @@ class QuoteService
     }
 
     // Use input to create array with separate keys for quote and character
-    public function setQuoteArray(string $input): void
+    private function setQuoteArray(string $input): void
     {
         $sectionsDash = explode(' — ', $input);
         $sectionsDoubleHypen = explode(' -- ', $input);
         $sectionsHypen = explode(' - ', $input);
+        $sectionsFlushDash = explode('—', $input);
+        $sectionsFlushDoubleHypen = explode('--', $input);
+        $sectionsFlushHypen = explode('-', $input);
 
         if (count($sectionsDash) == 2) {
             $sections = $sectionsDash;
@@ -36,6 +39,12 @@ class QuoteService
             $sections = $sectionsDoubleHypen;
         } else if (count($sectionsHypen) == 2) {
             $sections = $sectionsHypen;
+        } else if (count($sectionsFlushDash) == 2) {
+            $sections = $sectionsFlushDash;
+        } else if (count($sectionsFlushDoubleHypen) == 2) {
+            $sections = $sectionsFlushDoubleHypen;
+        } else if (count($sectionsFlushHypen) == 2) {
+            $sections = $sectionsFlushHypen;
         } else {
             $sections = [];
         }
