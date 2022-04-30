@@ -27,26 +27,35 @@ class QuoteService
     private function setQuoteArray(string $input): void
     {
         $sectionsDash = explode(' — ', $input);
-        $sectionsDoubleHypen = explode(' -- ', $input);
-        $sectionsHypen = explode(' - ', $input);
-        $sectionsFlushDash = explode('—', $input);
-        $sectionsFlushDoubleHypen = explode('--', $input);
-        $sectionsFlushHypen = explode('-', $input);
-
         if (count($sectionsDash) == 2) {
             $sections = $sectionsDash;
-        } else if (count($sectionsDoubleHypen) == 2) {
-            $sections = $sectionsDoubleHypen;
-        } else if (count($sectionsHypen) == 2) {
-            $sections = $sectionsHypen;
-        } else if (count($sectionsFlushDash) == 2) {
-            $sections = $sectionsFlushDash;
-        } else if (count($sectionsFlushDoubleHypen) == 2) {
-            $sections = $sectionsFlushDoubleHypen;
-        } else if (count($sectionsFlushHypen) == 2) {
-            $sections = $sectionsFlushHypen;
-        } else {
-            $sections = [];
+        } else { 
+            $sectionsDoubleHypen = explode(' -- ', $input);
+            if (count($sectionsDoubleHypen) == 2) {
+                $sections = $sectionsDoubleHypen;
+            } else {
+                $sectionsHypen = explode(' - ', $input);
+                if (count($sectionsHypen) == 2) {
+                    $sections = $sectionsHypen;
+                } else {
+                    $sectionsFlushDash = explode('—', $input);
+                    if (count($sectionsFlushDash) == 2) {
+                        $sections = $sectionsFlushDash;
+                    } else {
+                        $sectionsFlushDoubleHypen = explode('--', $input);
+                        if (count($sectionsFlushDoubleHypen) == 2) {
+                            $sections = $sectionsFlushDoubleHypen;
+                        } else {
+                            $sectionsFlushHypen = explode('-', $input);
+                            if (count($sectionsFlushHypen) == 2) {
+                                $sections = $sectionsFlushHypen;
+                            } else {
+                                $sections = [];
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         if (count($sections) != 2) {
