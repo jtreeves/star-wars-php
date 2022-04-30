@@ -12,6 +12,20 @@ class QuoteService
     // An array with a quote key and a character key
     private array $quoteArray;
 
+    // An array of all possible breakpoints to test
+    private array $breakPoints = [
+        ' — ',
+        ' -- ',
+        ' - ',
+        ' ? ',
+        ' ! ',
+        '—',
+        '--',
+        '-',
+        '?',
+        '!',
+    ];
+
     // Set text to value returned from API call
     private function setFullText(): void
     {
@@ -24,51 +38,21 @@ class QuoteService
     }
 
     // Use input to create array with separate keys for quote and character
-    private function setQuoteArray(string $input): void
+    private function setQuoteArray(string $input, int $index): void
     {
-        $sectionsDash = explode(' — ', $input);
-        if (count($sectionsDash) == 2) {
-            $sections = $sectionsDash;
-        } else { 
-            $sectionsDoubleHypen = explode(' -- ', $input);
-            if (count($sectionsDoubleHypen) == 2) {
-                $sections = $sectionsDoubleHypen;
-            } else {
-                $sectionsHypen = explode(' - ', $input);
-                if (count($sectionsHypen) == 2) {
-                    $sections = $sectionsHypen;
-                } else {
-                    $sectionsFlushDash = explode('—', $input);
-                    if (count($sectionsFlushDash) == 2) {
-                        $sections = $sectionsFlushDash;
-                    } else {
-                        $sectionsFlushDoubleHypen = explode('--', $input);
-                        if (count($sectionsFlushDoubleHypen) == 2) {
-                            $sections = $sectionsFlushDoubleHypen;
-                        } else {
-                            $sectionsFlushHypen = explode('-', $input);
-                            if (count($sectionsFlushHypen) == 2) {
-                                $sections = $sectionsFlushHypen;
-                            } else {
-                                $sections = [];
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        $this->quoteArray = explode($this->breakPoints[$index], $input);
 
-        if (count($sections) != 2) {
-            $this->getQuoteCharacter();
-        } else {
-            $quote = $sections[0];
-            $character = $sections[1];
-            $package = [
-                'quote' => $quote,
-                'character' => $character,
+        if (count($this->quoteArray) == 2) {
+            $this->quoteArray = [
+                'quote' => $this->quoteArray[0],
+                'character' => $this->quoteArray[1],
             ];
-    
-            $this->quoteArray = $package;
+        } else {
+            if ($index == 9) {
+                $this->getQuoteCharacter();
+            } else {
+                $this->setQuoteArray($input, $index + 1);
+            }
         }
     }
 
@@ -76,7 +60,7 @@ class QuoteService
     public function getQuoteCharacter(): array
     {
         $this->setFullText();
-        $this->setQuoteArray($this->fullText);
+        $this->setQuoteArray($this->fullText, 0);
 
         return $this->quoteArray;
     }
