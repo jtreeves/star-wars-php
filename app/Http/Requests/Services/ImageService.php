@@ -13,7 +13,7 @@ class ImageService
     private string $outputUrl;
 
     // Set input URL for API call by using character
-    public function setInputUrl(string $character): void
+    private function setInputUrl(string $character): void
     {
         $lowerCharacter = strtolower($character);
         $dashedCharacter = str_replace(' ', '-', $lowerCharacter);
@@ -26,7 +26,7 @@ class ImageService
     }
     
     // Set output to URL of image returned from API
-    public function setOutputUrl(string $source): void
+    private function setOutputUrl(string $source): void
     {
         $response = Http::get($source);
         $json = $response->json();
