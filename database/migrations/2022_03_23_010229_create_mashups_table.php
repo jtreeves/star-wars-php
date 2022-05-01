@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('mashups', function (Blueprint $table) {
             $table->id();
-            $table->string('quote');
+            $table->text('quote');
             $table->string('character');
             $table->string('image');
             $table->timestamps();
