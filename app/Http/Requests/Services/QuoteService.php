@@ -18,13 +18,21 @@ class QuoteService
         ' -- ',
         ' - ',
         ' ? ',
-        ' ! ',
-        '—',
-        '--',
-        '-',
-        '?',
-        '!',
     ];
+
+    // Remove parenthetical title from end of quote
+    private function deleteTitle(): void
+    {
+        $quote = $this->quoteArray['quote'];
+        $title = '(A New Hope)';
+
+        if (str_contains($quote, $title)) {
+            $position = strpos($quote, $title);
+            $paredQuote = substr($quote, 0, $position - 2);
+
+            $this->quoteArray['quote'] = $paredQuote;
+        }
+    }
 
     // Set text to value returned from API call
     private function setFullText(): void
@@ -47,8 +55,9 @@ class QuoteService
                 'quote' => $this->quoteArray[0],
                 'character' => $this->quoteArray[1],
             ];
+            $this->deleteTitle();
         } else {
-            if ($index == 9) {
+            if ($index == 3) {
                 $this->getQuoteCharacter();
             } else {
                 $this->setQuoteArray($input, $index + 1);
