@@ -35,7 +35,11 @@ class ImageService
         $original = $images['original'];
         $url = $original['url'];
 
-        $this->outputUrl = $url;
+        if ($url && str_starts_with($url, 'https://media')) {
+            $this->outputUrl = $url;
+        } else {
+            $this->setOutputUrl($source);
+        }
     }
 
     // Retrieve URL image returned from API
