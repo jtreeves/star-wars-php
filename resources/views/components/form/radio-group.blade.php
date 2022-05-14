@@ -25,13 +25,12 @@
                 $isEditing && 
                 $key == $selection
             )
-                <div>
+                <div class="flex items-center gap-3">
                     <input 
                         type="radio"
                         name="{{ $field }}"
                         id="{{ $key }}"
                         value="{{ $key }}"
-                        class="hidden"
                         checked
                     />
                         
@@ -52,13 +51,12 @@
                     </label>
                 </div>
             @else
-                <div>
+                <div class="flex items-center gap-3">
                     <input 
                         type="radio"
                         name="{{ $field }}"
                         id="{{ $key }}"
                         value="{{ $key }}"
-                        class="hidden"
                     />
                         
                     <label 
