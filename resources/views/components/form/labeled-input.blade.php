@@ -4,7 +4,7 @@
     'isEditing',
 ])
 
-<article>
+<article class="flex gap-3 items-center">
     <label 
         for="{{ $field }}"
         class="uppercase"
