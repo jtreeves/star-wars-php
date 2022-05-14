@@ -2,7 +2,7 @@
     'id',
 ])
 
-<section>
+<section class="flex flex-col items-center gap-3">
     <form 
         action="{{ route(
             'profiles.edit', 
