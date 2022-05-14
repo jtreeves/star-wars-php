@@ -4,11 +4,11 @@
 ])
 
 <article>
-    <h2>
+    <h2 class="uppercase text-center">
         {{ $field }}
     </h2>
 
-    <p>
+    <p class="text-center">
         {{ $value }}
     </p>
 </article>
