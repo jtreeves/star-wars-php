@@ -31,6 +31,7 @@
                         name="{{ $field }}"
                         id="{{ $key }}"
                         value="{{ $key }}"
+                        class="hidden"
                         checked
                     />
                         
@@ -57,6 +58,7 @@
                         name="{{ $field }}"
                         id="{{ $key }}"
                         value="{{ $key }}"
+                        class="hidden"
                     />
                         
                     <label 

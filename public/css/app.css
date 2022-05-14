@@ -702,9 +702,6 @@ select {
 .h-5 {
   height: 1.25rem;
 }
-.h-\[100px\] {
-  height: 100px;
-}
 .h-16 {
   height: 4rem;
 }
@@ -740,8 +737,8 @@ select {
 .w-5 {
   width: 1.25rem;
 }
-.w-\[100px\] {
-  width: 100px;
+.w-16 {
+  width: 4rem;
 }
 .w-auto {
   width: auto;
@@ -754,9 +751,6 @@ select {
 }
 .w-full {
   width: 100%;
-}
-.w-16 {
-  width: 4rem;
 }
 .w-32 {
   width: 8rem;
@@ -821,6 +815,11 @@ select {
 }
 .list-disc {
   list-style-type: disc;
+}
+.appearance-none {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -892,11 +891,11 @@ select {
 .rounded-md {
   border-radius: 0.375rem;
 }
-.rounded {
-  border-radius: 0.25rem;
-}
 .rounded-full {
   border-radius: 9999px;
+}
+.rounded {
+  border-radius: 0.25rem;
 }
 .rounded-l-md {
   border-top-left-radius: 0.375rem;
@@ -1682,6 +1681,15 @@ select {
 @font-face {
     font-family: 'NewsCycle';
     src: url('/fonts/NewsCycle.ttf');
+}
+.checked\:ring-2:checked {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.checked\:ring-black:checked {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(0 0 0 / var(--tw-ring-opacity));
 }
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
