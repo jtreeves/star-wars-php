@@ -44,7 +44,9 @@
                                 size="medium"
                             />
                         @else
-                            {{ $key }}
+                            <x-element.color 
+                                :color="$key"
+                            />
                         @endif
                     </label>
                 </div>
@@ -67,7 +69,9 @@
                                 size="medium"
                             />
                         @else
-                            {{ $key }}
+                            <x-element.color 
+                                :color="$key"
+                            />
                         @endif
                     </label>
                 </div>
