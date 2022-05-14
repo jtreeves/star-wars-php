@@ -14,6 +14,7 @@
 <article>
     <label 
         for="{{ $field }}"
+        class="uppercase"
     >
         {{ $field }}
     </label>
