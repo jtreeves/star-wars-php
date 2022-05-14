@@ -3,9 +3,9 @@
     'followings',
 ])
 
-<section>
-    <article>
-        <h2>
+<section class="flex flex-col gap-3">
+    <article class="flex flex-col items-center gap-2">
+        <h2 class="uppercase">
             Followers
         </h2>
 
@@ -15,8 +15,8 @@
         />
     </article>
     
-    <article>
-        <h2>
+    <article class="flex flex-col items-center gap-2">
+        <h2 class="uppercase">
             Following
         </h2>
 
