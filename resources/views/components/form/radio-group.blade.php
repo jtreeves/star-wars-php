@@ -19,52 +19,58 @@
         {{ $field }}
     </label>
 
-    <div>
+    <div class="grid grid-cols-5 gap-4">
         @foreach ($constants as $key)
             @if (
                 $isEditing && 
                 $key == $selection
             )
-                <input 
-                    type="radio"
-                    name="{{ $field }}"
-                    id="{{ $key }}"
-                    value="{{ $key }}"
-                    checked
-                />
-                    
-                <label 
-                    for="{{ $key }}"
-                >
-                    @if ($isAvatar)
-                        <x-element.avatar 
-                            :avatar="$key"
-                            size="medium"
-                        />
-                    @else
-                        {{ $key }}
-                    @endif
-                </label>
+                <div>
+                    <input 
+                        type="radio"
+                        name="{{ $field }}"
+                        id="{{ $key }}"
+                        value="{{ $key }}"
+                        checked
+                    />
+                        
+                    <label 
+                        for="{{ $key }}"
+                        class="cursor-pointer"
+                    >
+                        @if ($isAvatar)
+                            <x-element.avatar 
+                                :avatar="$key"
+                                size="medium"
+                            />
+                        @else
+                            {{ $key }}
+                        @endif
+                    </label>
+                </div>
             @else
-                <input 
-                    type="radio"
-                    name="{{ $field }}"
-                    id="{{ $key }}"
-                    value="{{ $key }}"
-                />
-                    
-                <label 
-                    for="{{ $key }}"
-                >
-                    @if ($isAvatar)
-                        <x-element.avatar 
-                            :avatar="$key"
-                            size="medium"
-                        />
-                    @else
-                        {{ $key }}
-                    @endif
-                </label>
+                <div>
+                    <input 
+                        type="radio"
+                        name="{{ $field }}"
+                        id="{{ $key }}"
+                        value="{{ $key }}"
+                    />
+                        
+                    <label 
+                        for="{{ $key }}"
+                        class="cursor-pointer"
+                    >
+                        @if ($isAvatar)
+                            <x-element.avatar 
+                                :avatar="$key"
+                                size="medium"
+                            />
+                        @else
+                            {{ $key }}
+                        @endif
+                    </label>
+                </div>
             @endif
         @endforeach
     </div>
