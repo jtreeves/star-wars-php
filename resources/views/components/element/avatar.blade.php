@@ -60,5 +60,6 @@
 <img 
     src="{{ config('constants.avatars')[$avatar] }}" 
     alt="{{ $avatar }}"
+    title="{{ $avatar }}"
     class="object-cover rounded-full border-solid {{ $borderColor }} {{ $dimensions }}"
 />
