@@ -14,6 +14,7 @@
     @endif
 
     method="POST"
+    class="flex flex-col gap-3 items-center"
 >
     @csrf
 
